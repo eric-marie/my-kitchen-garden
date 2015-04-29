@@ -205,6 +205,7 @@ module.exports = function (grunt) {
 
     //----- Groupement des tâches en un appel
     grunt.registerTask('default', ['bower', 'copy', 'less', 'cssmin', 'uglify', 'concat', 'modernizr']);
+    grunt.registerTask('watch', ['watch']);
     grunt.registerTask('install:mkg', ['copy:mkg', 'less', 'cssmin', 'uglify:mkg', 'concat']);
     grunt.registerTask('install:ReStart', ['copy:ReStart', 'less', 'cssmin', 'uglify:ReStart', 'concat']);
 };

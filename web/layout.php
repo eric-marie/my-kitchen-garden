@@ -56,6 +56,12 @@ if (isset($_GET['connect'])) {
     <meta name="msapplication-TileImage" content="images/favicon/ms-icon-144x144.png">
 </head>
 <body class="collapsing_header">
+<div id="fake-web-site">
+    <div class="alert alert-info alert-dismissible fade in" role="alert">
+        <button type="button" class="close" data-dismiss="alert"><span>×</span></button>
+        Attention, ce site web est <strong>fictif</strong>. Il s'agit d'un projet étudiant. Les informations y figurant sont, pour tout ou parties, erronées.
+    </div>
+</div>
 <header>
     <div class="container">
         <div class="navbar navbar-default" role="navigation">
@@ -170,9 +176,11 @@ include($page . '.php');
         <div class="container">
             <div class="row">
                 <div class="col-sm-4">
-                    Copyright ©2014-2015 tous droits reservés
+                    Copyright ©2014-2015 tous droits réservés
                 </div>
                 <div class="text-center col-sm-4">
+                    <a href="layout.php?p=contact">Contactez-nous</a>
+                    &nbsp;|&nbsp;
                     <a href="layout.php?p=mentions-legales">Mentions légales</a>
                 </div>
                 <div class="text-right col-sm-4">

@@ -64,7 +64,7 @@
                                         <input name="password-confirm" placeholder="Confirmation de mot de passe" class="form-control" required type="password" />
                                         <div class="checkbox">
                                             <label class="">
-                                                <input name="terms-conditions" value="1" type="checkbox" /> J'accèpte les <a href="layout.php?p=conditions-utilisation">conditions d'utilisation</a>
+                                                <input name="terms-conditions" value="1" type="checkbox" /> J'accepte les <a href="layout.php?p=mentions-legales#condition-utilisation">conditions d'utilisation</a>
                                             </label>
                                         </div>
                                     </div>
