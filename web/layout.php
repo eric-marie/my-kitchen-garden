@@ -71,8 +71,7 @@ if (isset($_GET['connect'])) {
                     <span class="logo_title">My Kitchen Garden</span>
                     <span class="logo_subtitle">Mon aide potagère !</span>
                 </a>
-                <a class="btn btn-navbar btn-default navbar-toggle" data-toggle="collapse"
-                   data-target=".navbar-collapse">
+                <a class="btn btn-navbar btn-default navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="nb_left pull-left">
                         <span class="fa fa-reorder"></span>
                     </span>
@@ -141,24 +140,20 @@ include($page . '.php');
                     <h3>Derniers articles</h3>
                     <ul class="media-list">
                         <li class="media">
-                            <a href="layout.php?p=blog-post" class="media-photo"
-                               style="background-image:url(http://lorempixel.com/g/65/70/)"></a>
-                            <a href="layout.php?p=blog-post" class="media-date">19<span>FEB</span></a>
+                            <a href="layout.php?p=blog-post" class="media-date">1<span>AVR</span></a>
                             <h5 class="media-heading">
-                                <a href="layout.php?p=blog-post">Media heading, this is a title of a news...</a>
+                                <a href="layout.php?p=blog-post">Fugiat dapibus, tellus ac cursus...</a>
                             </h5>
 
-                            <p>Fugiat dapibus, tellus ac cursus commodo, ut fermentum...</p>
+                            <p>Duis est enim, feugiat sit amet sollicitudin ut, mattis interdum quam. Ut euismod libero nec orci vulputate lobortis. Class aptent taciti sociosqu ad litora...</p>
                         </li>
                         <li class="media">
-                            <a href="layout.php?p=blog-post" class="media-photo"
-                               style="background-image:url(http://lorempixel.com/g/65/70/)"></a>
-                            <a href="layout.php?p=blog-post" class="media-date">18<span>FEB</span></a>
+                            <a href="layout.php?p=blog-post" class="media-date">1<span>AVR</span></a>
                             <h5 class="media-heading">
-                                <a href="layout.php?p=blog-post">Media heading, of a news item.</a>
+                                <a href="layout.php?p=blog-post">Fugiat dapibus, tellus ac cursus...</a>
                             </h5>
 
-                            <p>Fugiat dapibus, tellus ac cursus commodo, condime ntum nibh, ut fermentum...</p>
+                            <p>Duis est enim, feugiat sit amet sollicitudin ut, mattis interdum quam. Ut euismod libero nec orci vulputate lobortis. Class aptent taciti sociosqu ad litora...</p>
                         </li>
                     </ul>
                 </div>
