@@ -11,3 +11,5 @@
 /lib/
 /web/*
 !/web/*.php
+!/web/fiche-post/
+/nodejs/mri-server.js

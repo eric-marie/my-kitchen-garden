@@ -80,13 +80,13 @@ if (isset($_GET['connect'])) {
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav pull-right navbar-nav">
-                    <li<?php echo 'index' == $page ? ' class="active"' : '' ?>><a href="layout.php">Accueil</a></li>
                     <?php if (isset($_SESSION['connected']) && $_SESSION['connected']): ?>
                         <li<?php echo 'confirmation-plantation' == $page ? ' class="active"' : '' ?>><a
                                 href="layout.php?p=confirmation-plantation">Mon potager</a></li>
                         <li<?php echo 'gouts' == $page ? ' class="active"' : '' ?>><a href="layout.php?p=gouts">Mes
                                 goûts</a></li>
                     <?php endif; ?>
+                    <li<?php echo 'fiche' == $page ? ' class="active"' : '' ?>><a href="layout.php?p=fiche">Fiches</a></li>
                     <li<?php echo 'blog' == $page ? ' class="active"' : '' ?>><a href="layout.php?p=blog">Blog</a></li>
                     <li<?php echo 'forum' == $page ? ' class="active"' : '' ?>><a href="layout.php?p=forum">Forum</a>
                     </li>

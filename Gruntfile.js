@@ -23,6 +23,7 @@ module.exports = function (grunt) {
             },
             vendor: '<%= dirs.root %>vendor/',
             ReStart: '<%= dirs.root %>ReStart/',
+            nodejs: '<%= dirs.root %>nodejs/',
             web: {
                 root: '<%= dirs.root %>web/',
                 css: '<%= dirs.web.root %>css/',
@@ -67,6 +68,16 @@ module.exports = function (grunt) {
                         cwd: '<%= dirs.vendor %>ui-to-top/img/',
                         src: ['ui.totop.png'],
                         dest: '<%= dirs.web.images %>',
+                        filter: 'isFile'
+                    },
+                    {
+                        expand: true,
+                        cwd: '<%= dirs.vendor %>marmiton-recherche-ingredient/src/',
+                        src: 'server.js',
+                        dest: '<%= dirs.nodejs %>',
+                        rename: function(dest, src) {
+                            return dest + 'mri-server.js';
+                        },
                         filter: 'isFile'
                     }
                 ]
