@@ -7,6 +7,9 @@
 # Libraires importées via Bower
 /vendor/
 
+# Vagrant
+/.vagrant/
+
 # Fichiers générés par les tâches Grunt
 /lib/
 /web/*
