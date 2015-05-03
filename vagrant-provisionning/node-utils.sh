@@ -1,19 +1,12 @@
 #!/bin/bash
-# On test d'abord si Bower existe déjà pour ne pas relancer le provisionning
-if ! type "bower" > /dev/null; then
-    sudo npm install -g bower
-else
-    echo "Bower est deja installe"
-fi
-# On test d'abord si Bower existe déjà pour ne pas relancer le provisionning
-if ! type "grunt" > /dev/null; then
-    sudo npm install -g grunt-cli
-else
-    echo "Grunt est deja installe"
-fi
-# On test d'abord si MEAN existe déjà pour ne pas relancer le provisionning
-if ! type "mean" > /dev/null; then
-    sudo npm install -g mean-cli
-else
-    echo "MEAN est deja installe"
-fi
+if ! type "bower" > /dev/null; then npm install -g bower
+else echo "Bower est deja installe" ; fi
+
+if ! type "grunt" > /dev/null; then npm install -g grunt-cli
+else echo "Grunt est deja installe" ; fi
+
+if ! type "nodemon" > /dev/null; then npm install -g nodemon
+else echo "Nodemon est deja installe" ; fi
+
+if ! type "express" > /dev/null; then npm install -g express-generator
+else echo "Express est deja installe" ; fi

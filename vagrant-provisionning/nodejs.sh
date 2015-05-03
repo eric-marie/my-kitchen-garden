@@ -17,3 +17,23 @@ if ! type "node" > /dev/null; then
 else
     echo "NodeJS est deja installe"
 fi
+# On test d'abord si la config NPM existe déjà pour ne pas relancer le provisionning
+if ! [ -f /home/vagrant/.npmrc ]; then
+    # Définition de l'emplacement des librairies globales de npm
+    echo 'prefix=/home/vagrant/.npm_modules' > /home/vagrant/.npmrc
+    # Ajout de ce chemin dans le PATH dans le .profile
+    echo 'if [ -d "$HOME/.npm_modules" ] ; then' >> /home/vagrant/.profile
+    echo '    PATH="$PATH:/home/vagrant/.npm_modules/bin"' >> /home/vagrant/.profile
+    echo 'fi' >> /home/vagrant/.profile
+else
+    echo "La config NPM est deja installee"
+fi
+# On test d'abord si le dossier des modules node de MKG existe déjà pour ne pas relancer le provisionning
+if ! [ -d /home/vagrant/mkg_node_modules ]; then
+    mkdir /home/vagrant/mkg_node_modules
+    cd /home/vagrant/mkg/mean
+    ln -ls /home/vagrant/mkg_node_modules node_modules
+    cd /home/vagrant/mkg
+else
+    echo "Le dossier des modules node de MKG existe deja"
+fi

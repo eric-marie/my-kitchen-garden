@@ -9,6 +9,7 @@
 
 # Vagrant
 /.vagrant/
+/mean/node_modules
 
 # Fichiers générés par les tâches Grunt
 /lib/
