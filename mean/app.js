@@ -3,14 +3,12 @@ var express = require('express'),
     favicon = require('serve-favicon'),
     logger = require('morgan'),
     cookieParser = require('cookie-parser'),
-    bodyParser = require('body-parser'),
-    mongoose = require('mongoose');
+    bodyParser = require('body-parser');
 
 var routes = require('./routes/index'),
     users = require('./routes/users');
 
-var app = express(),
-    db = mongoose.createConnection('localhost', 'mkg');
+var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
