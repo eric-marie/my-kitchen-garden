@@ -1,2 +1,2 @@
-cd "%~dp0"
+cd "%~dp0/.."
 vagrant provision

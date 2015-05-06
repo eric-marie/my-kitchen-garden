@@ -9,11 +9,15 @@
 
 # Vagrant
 /.vagrant/
-/mean/node_modules
+/mean/node_modules/
 
 # Fichiers générés par les tâches Grunt
 /lib/
 /web/*
 !/web/*.php
 !/web/fiche-post/
-/nodejs/mri-server.js
+/mean/bin/mri-server.js
+/mean/public/fonts/
+/mean/public/images/
+/mean/public/js/
+/mean/public/css/

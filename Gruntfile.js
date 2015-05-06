@@ -9,27 +9,38 @@ module.exports = function (grunt) {
         // Configuration des chemins de fichiers
         dirs: {
             root: './',
-            dev: {
-                root: '<%= dirs.root %>dev/',
-                js: '<%= dirs.dev.root %>js/',
-                less: '<%= dirs.dev.root %>less/',
-                images: '<%= dirs.dev.root %>images/',
+            assets: {
+                root: '<%= dirs.root %>assets/',
+                js: '<%= dirs.assets.root %>js/',
+                less: '<%= dirs.assets.root %>less/',
+                images: '<%= dirs.assets.root %>images/',
                 ReStart: {
-                    root: '<%= dirs.dev.root %>ReStart/',
-                    js: '<%= dirs.dev.ReStart.root %>js/',
-                    less: '<%= dirs.dev.ReStart.root %>less/',
-                    images: '<%= dirs.dev.ReStart.root %>images/'
+                    root: '<%= dirs.assets.root %>ReStart/',
+                    js: '<%= dirs.assets.ReStart.root %>js/',
+                    less: '<%= dirs.assets.ReStart.root %>less/',
+                    images: '<%= dirs.assets.ReStart.root %>images/'
                 }
             },
             vendor: '<%= dirs.root %>vendor/',
             ReStart: '<%= dirs.root %>ReStart/',
-            nodejs: '<%= dirs.root %>nodejs/',
+            bin: '<%= dirs.root %>bin/',
             web: {
                 root: '<%= dirs.root %>web/',
                 css: '<%= dirs.web.root %>css/',
                 fonts: '<%= dirs.web.root %>fonts/',
                 images: '<%= dirs.web.root %>images/',
                 js: '<%= dirs.web.root %>js/'
+            },
+            mean: {
+                root: '<%= dirs.root %>mean/',
+                bin: '<%= dirs.mean.root %>bin/',
+                public: {
+                    root: '<%= dirs.mean.root %>public/',
+                    images: '<%= dirs.mean.public.root %>images/',
+                    js: '<%= dirs.mean.public.root %>js/',
+                    css: '<%= dirs.mean.public.root %>css/',
+                    fonts: '<%= dirs.mean.public.root %>fonts/'
+                }
             }
         },
 
@@ -46,35 +57,35 @@ module.exports = function (grunt) {
                         expand: true,
                         cwd: '<%= dirs.vendor %>flex-slider/fonts/',
                         src: ['*'],
-                        dest: '<%= dirs.web.fonts %>',
+                        dest: '<%= dirs.mean.public.fonts %>',
                         filter: 'isFile'
                     },
                     {
                         expand: true,
                         cwd: '<%= dirs.vendor %>fontawesome/fonts/',
                         src: ['*'],
-                        dest: '<%= dirs.web.fonts %>',
+                        dest: '<%= dirs.mean.public.fonts %>',
                         filter: 'isFile'
                     },
                     {
                         expand: true,
                         cwd: '<%= dirs.vendor %>bootstrap/fonts/',
                         src: ['*'],
-                        dest: '<%= dirs.web.fonts %>',
+                        dest: '<%= dirs.mean.public.fonts %>',
                         filter: 'isFile'
                     },
                     {
                         expand: true,
                         cwd: '<%= dirs.vendor %>ui-to-top/img/',
                         src: ['ui.totop.png'],
-                        dest: '<%= dirs.web.images %>',
+                        dest: '<%= dirs.mean.public.images %>',
                         filter: 'isFile'
                     },
                     {
                         expand: true,
-                        cwd: '<%= dirs.vendor %>marmiton-recherche-ingredient/src/',
+                        cwd: '<%= dirs.vendor %>marmiton-recherche-ingredient/',
                         src: 'server.js',
-                        dest: '<%= dirs.nodejs %>',
+                        dest: '<%= dirs.mean.bin %>',
                         rename: function(dest, src) {
                             return dest + 'mri-server.js';
                         },
@@ -86,9 +97,9 @@ module.exports = function (grunt) {
                 files: [
                     {
                         expand: true,
-                        cwd: '<%= dirs.dev.ReStart.images %>',
+                        cwd: '<%= dirs.assets.ReStart.images %>',
                         src: ['**'],
-                        dest: '<%= dirs.web.images %>'
+                        dest: '<%= dirs.mean.public.images %>'
                     }
                 ]
             },
@@ -96,9 +107,9 @@ module.exports = function (grunt) {
                 files: [
                     {
                         expand: true,
-                        cwd: '<%= dirs.dev.images %>',
+                        cwd: '<%= dirs.assets.images %>',
                         src: ['**'],
-                        dest: '<%= dirs.web.images %>'
+                        dest: '<%= dirs.mean.public.images %>'
                     }
                 ]
             }
@@ -110,7 +121,7 @@ module.exports = function (grunt) {
                     compress: true
                 },
                 files: {
-                    '<%= dirs.web.css %>main.min.css': '<%= dirs.dev.less %>mkg.less'
+                    '<%= dirs.mean.public.css %>main.min.css': '<%= dirs.assets.less %>mkg.less'
                 }
             }
         },
@@ -121,7 +132,7 @@ module.exports = function (grunt) {
             },
             cssmin: {
                 files: {
-                    '<%= dirs.web.css %>main.min.css': '<%= dirs.web.css %>main.min.css'
+                    '<%= dirs.mean.public.css %>main.min.css': '<%= dirs.web.css %>main.min.css'
                 }
             }
         },
@@ -132,7 +143,7 @@ module.exports = function (grunt) {
             },
             libraries: {
                 files: {
-                    '<%= dirs.web.js %>libraries.min.js': [
+                    '<%= dirs.mean.public.js %>libraries.min.js': [
                         '<%= dirs.vendor %>jquery/dist/jquery.js',
                         '<%= dirs.vendor %>bootstrap/dist/js/bootstrap.js',
                         '<%= dirs.vendor %>flex-slider/jquery.flexslider.js',
@@ -145,20 +156,20 @@ module.exports = function (grunt) {
             },
             ReStart: {
                 files: {
-                    '<%= dirs.web.js %>ReStart.min.js': [
-                        '<%= dirs.dev.ReStart.js %>flickr-images.js',
-                        '<%= dirs.dev.ReStart.js %>collapse-header.js',
-                        '<%= dirs.dev.ReStart.js %>flexslider.js',
-                        '<%= dirs.dev.ReStart.js %>ui-to-top.js',
-                        '<%= dirs.dev.ReStart.js %>wow.js',
-                        '<%= dirs.dev.ReStart.js %>snap-svg.js'
+                    '<%= dirs.mean.public.js %>ReStart.min.js': [
+                        '<%= dirs.assets.ReStart.js %>flickr-images.js',
+                        '<%= dirs.assets.ReStart.js %>collapse-header.js',
+                        '<%= dirs.assets.ReStart.js %>flexslider.js',
+                        '<%= dirs.assets.ReStart.js %>ui-to-top.js',
+                        '<%= dirs.assets.ReStart.js %>wow.js',
+                        '<%= dirs.assets.ReStart.js %>snap-svg.js'
                     ]
                 }
             },
             mkg: {
                 files: {
-                    '<%= dirs.web.js %>mkg.min.js': [
-                        //'<%= dirs.dev.js %>test.js'
+                    '<%= dirs.mean.public.js %>mkg.min.js': [
+                        //'<%= dirs.assets.js %>test.js'
                     ]
                 }
             }
@@ -181,9 +192,9 @@ module.exports = function (grunt) {
         modernizr: {
             modernizr: {
                 devFile: 'remote',
-                outputFile: '<%= dirs.web.js %>modernizr.min.js',
+                outputFile: '<%= dirs.mean.public.js %>modernizr.min.js',
                 excludeFiles: [
-                    '<%= dirs.web.js %>modernizr.min.js'
+                    '<%= dirs.mean.public.js %>modernizr.min.js'
                 ]
             }
         },
@@ -191,8 +202,10 @@ module.exports = function (grunt) {
         watch: {
             less: {
                 files: [
-                    '<%= dirs.dev.less %>*.less',
-                    '<%= dirs.dev.less %>*/*.less'
+                    '<%= dirs.assets.less %>*.less',
+                    '<%= dirs.assets.less %>*/*.less',
+                    '<%= dirs.assets.ReStart.less %>*.less',
+                    '<%= dirs.assets.ReStart.less %>*/*.less'
                 ],
                 tasks: [
                     'less'
@@ -200,8 +213,8 @@ module.exports = function (grunt) {
             },
             js: {
                 files: [
-                    '<%= dirs.dev.js %>*.js',
-                    '<%= dirs.dev.js %>*/*.js'
+                    '<%= dirs.assets.js %>*.js',
+                    '<%= dirs.assets.js %>*/*.js'
                 ],
                 tasks: [
                     'uglify:mkg',
