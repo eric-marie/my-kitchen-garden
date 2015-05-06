@@ -21,7 +21,7 @@ module.exports = function (grunt) {
                     images: '<%= dirs.assets.ReStart.root %>images/'
                 }
             },
-            vendor: '<%= dirs.root %>vendor/',
+            bower_components: '<%= dirs.root %>bower_components/',
             ReStart: '<%= dirs.root %>ReStart/',
             bin: '<%= dirs.root %>bin/',
             web: {
@@ -51,39 +51,39 @@ module.exports = function (grunt) {
         },
         // Copie les ressources (images, fonts, etc.) des différentes librairies dans les assets
         copy: {
-            vendors: {
+            bower_components: {
                 files: [
                     {
                         expand: true,
-                        cwd: '<%= dirs.vendor %>flex-slider/fonts/',
+                        cwd: '<%= dirs.bower_components %>flex-slider/fonts/',
                         src: ['*'],
                         dest: '<%= dirs.mean.public.fonts %>',
                         filter: 'isFile'
                     },
                     {
                         expand: true,
-                        cwd: '<%= dirs.vendor %>fontawesome/fonts/',
+                        cwd: '<%= dirs.bower_components %>fontawesome/fonts/',
                         src: ['*'],
                         dest: '<%= dirs.mean.public.fonts %>',
                         filter: 'isFile'
                     },
                     {
                         expand: true,
-                        cwd: '<%= dirs.vendor %>bootstrap/fonts/',
+                        cwd: '<%= dirs.bower_components %>bootstrap/fonts/',
                         src: ['*'],
                         dest: '<%= dirs.mean.public.fonts %>',
                         filter: 'isFile'
                     },
                     {
                         expand: true,
-                        cwd: '<%= dirs.vendor %>ui-to-top/img/',
+                        cwd: '<%= dirs.bower_components %>ui-to-top/img/',
                         src: ['ui.totop.png'],
                         dest: '<%= dirs.mean.public.images %>',
                         filter: 'isFile'
                     },
                     {
                         expand: true,
-                        cwd: '<%= dirs.vendor %>marmiton-recherche-ingredient/',
+                        cwd: '<%= dirs.bower_components %>marmiton-recherche-ingredient/',
                         src: 'server.js',
                         dest: '<%= dirs.mean.bin %>',
                         rename: function(dest, src) {
@@ -141,16 +141,16 @@ module.exports = function (grunt) {
             options: {
                 preserveComments: false
             },
-            libraries: {
+            bower_components: {
                 files: {
-                    '<%= dirs.mean.public.js %>libraries.min.js': [
-                        '<%= dirs.vendor %>jquery/dist/jquery.js',
-                        '<%= dirs.vendor %>bootstrap/dist/js/bootstrap.js',
-                        '<%= dirs.vendor %>flex-slider/jquery.flexslider.js',
-                        '<%= dirs.vendor %>ui-to-top/js/jquery.ui.totop.js',
-                        '<%= dirs.vendor %>jquery.easing/js/jquery.easing.js',
-                        '<%= dirs.vendor %>WOW/dist/wow.js',
-                        '<%= dirs.vendor %>snap.svg/dist/snap.svg.js'
+                    '<%= dirs.mean.public.js %>bower_components.min.js': [
+                        '<%= dirs.bower_components %>jquery/dist/jquery.js',
+                        '<%= dirs.bower_components %>bootstrap/dist/js/bootstrap.js',
+                        '<%= dirs.bower_components %>flex-slider/jquery.flexslider.js',
+                        '<%= dirs.bower_components %>ui-to-top/js/jquery.ui.totop.js',
+                        '<%= dirs.bower_components %>jquery.easing/js/jquery.easing.js',
+                        '<%= dirs.bower_components %>WOW/dist/wow.js',
+                        '<%= dirs.bower_components %>snap.svg/dist/snap.svg.js'
                     ]
                 }
             },
@@ -181,7 +181,7 @@ module.exports = function (grunt) {
             },
             concat: {
                 src: [
-                    '<%= dirs.web.js %>libraries.min.js',
+                    '<%= dirs.web.js %>bower_components.min.js',
                     '<%= dirs.web.js %>ReStart.min.js',
                     '<%= dirs.web.js %>mkg.min.js'
                 ],
