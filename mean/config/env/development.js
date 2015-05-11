@@ -6,8 +6,8 @@ module.exports = {
 		title: 'My Kitchen Garden - Dev...'
 	},
 	facebook: {
-		clientID: process.env.FACEBOOK_ID || 'APP_ID',
-		clientSecret: process.env.FACEBOOK_SECRET || 'APP_SECRET',
+		clientID: process.env.FACEBOOK_ID || '1659328634300477',
+		clientSecret: process.env.FACEBOOK_SECRET || 'a32d300f84b79b2c5ccd6befa21e644e',
 		callbackURL: '/auth/facebook/callback'
 	},
 	twitter: {
