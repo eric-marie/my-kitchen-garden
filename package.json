@@ -5,6 +5,10 @@
   "authors": [
     "Eric MARIE <eric.marie18@gmail.com>"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/eric-marie/my-kitchen-garden.git"
+  },
   "devDependencies": {
     "grunt": "0.4.*",
     "grunt-bower-task": "0.4.*",
@@ -16,9 +20,5 @@
     "grunt-contrib-watch": "0.6.*",
     "grunt-modernizr": "0.6.*",
     "load-grunt-tasks": "3.1.*"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/eric-marie/my-kitchen-garden.git"
   }
 }

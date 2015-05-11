@@ -16,15 +16,5 @@ module.exports = {
 		clientID: process.env.GOOGLE_ID || 'APP_ID',
 		clientSecret: process.env.GOOGLE_SECRET || 'APP_SECRET',
 		callbackURL: '/auth/google/callback'
-	},
-	linkedin: {
-		clientID: process.env.LINKEDIN_ID || 'APP_ID',
-		clientSecret: process.env.LINKEDIN_SECRET || 'APP_SECRET',
-		callbackURL: '/auth/linkedin/callback'
-	},
-	github: {
-		clientID: process.env.GITHUB_ID || 'APP_ID',
-		clientSecret: process.env.GITHUB_SECRET || 'APP_SECRET',
-		callbackURL: '/auth/github/callback'
 	}
 };
