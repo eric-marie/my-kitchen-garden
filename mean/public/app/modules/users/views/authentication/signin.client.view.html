@@ -1,0 +1,46 @@
+<div class="main" data-ng-controller="AuthenticationController">
+    <div class="container">
+        <section class="hgroup">
+            <h1>Connexion</h1>
+            <ul class="breadcrumb pull-right">
+                <li><a href="/#!/">Accueil</a></li>
+                <li class="active">Connexion</li>
+            </ul>
+        </section>
+        <section>
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <div class="signin">
+                        <div class="social_sign">
+                            <h3>Connectez-vous avec vos comptes de réseaux sociaux</h3>
+                            <a href="/auth/facebook" class="fb"><i class="fa fa-facebook"></i></a>
+                            <a href="/auth/twitter" class="tw"><i class="fa fa-twitter"></i></a>
+                            <a href="/auth/google" class="gp"><i class="fa fa-google-plus"></i></a>
+                        </div>
+                        <div class="or">
+                            <div class="or_l"></div>
+                            <span>ou</span>
+                            <div class="or_r"></div>
+                        </div>
+                        <p class="sign_title">Connectez-vous avec votre compte My Kitchen Garden</p>
+                        <div class="row">
+                            <div class="form col-lg-8 col-lg-offset-2">
+                                <form data-ng-submit="signin()">
+                                    <input name="username" data-ng-model="credentials.username" placeholder="Nom d'utilisateur" class="form-control" type="text" />
+                                    <input name="password" data-ng-model="credentials.password" placeholder="Mot de passe" class="form-control" type="password" />
+                                    <div class="forgot">
+                                        <a href="/#!/password/forgot">Mot de passe oublié ?</a>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-lg">Connexion</button>
+                                    <div data-ng-show="error" class="text-center text-danger">
+                                        <strong data-ng-bind="error"></strong>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

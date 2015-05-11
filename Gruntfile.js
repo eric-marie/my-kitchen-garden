@@ -24,13 +24,6 @@ module.exports = function (grunt) {
             bower_components: '<%= dirs.root %>bower_components/',
             ReStart: '<%= dirs.root %>ReStart/',
             bin: '<%= dirs.root %>bin/',
-            web: {
-                root: '<%= dirs.root %>web/',
-                css: '<%= dirs.web.root %>css/',
-                fonts: '<%= dirs.web.root %>fonts/',
-                images: '<%= dirs.web.root %>images/',
-                js: '<%= dirs.web.root %>js/'
-            },
             mean: {
                 root: '<%= dirs.root %>mean/',
                 bin: '<%= dirs.mean.root %>bin/',
@@ -132,7 +125,7 @@ module.exports = function (grunt) {
             },
             cssmin: {
                 files: {
-                    '<%= dirs.mean.public.css %>main.min.css': '<%= dirs.web.css %>main.min.css'
+                    '<%= dirs.mean.public.css %>main.min.css': '<%= dirs.mean.public.css %>main.min.css'
                 }
             }
         },
@@ -151,6 +144,21 @@ module.exports = function (grunt) {
                         '<%= dirs.bower_components %>jquery.easing/js/jquery.easing.js',
                         '<%= dirs.bower_components %>WOW/dist/wow.js',
                         '<%= dirs.bower_components %>snap.svg/dist/snap.svg.js'
+                    ]
+                }
+            },
+            angular: {
+                files: {
+                    '<%= dirs.mean.public.js %>angular.min.js': [
+                        '<%= dirs.bower_components %>angular/angular.min.js',
+                        '<%= dirs.bower_components %>angular-resource/angular-resource.min.js',
+                        '<%= dirs.bower_components %>angular-cookies/angular-cookies.min.js',
+                        '<%= dirs.bower_components %>angular-animate/angular-animate.min.js',
+                        '<%= dirs.bower_components %>angular-touch/angular-touch.min.js',
+                        '<%= dirs.bower_components %>angular-sanitize/angular-sanitize.min.js',
+                        '<%= dirs.bower_components %>angular-ui-router/release/angular-ui-router.min.js',
+                        '<%= dirs.bower_components %>angular-ui-utils/ui-utils.min.js',
+                        '<%= dirs.bower_components %>angular-bootstrap/ui-bootstrap-tpls.min.js'
                     ]
                 }
             },
@@ -179,13 +187,15 @@ module.exports = function (grunt) {
             options: {
                 separator: ';\n'
             },
-            concat: {
+            main: {
                 src: [
-                    '<%= dirs.web.js %>bower_components.min.js',
-                    '<%= dirs.web.js %>ReStart.min.js',
-                    '<%= dirs.web.js %>mkg.min.js'
+                    '<%= dirs.mean.public.js %>modernizr.min.js',
+                    '<%= dirs.mean.public.js %>bower_components.min.js',
+                    '<%= dirs.mean.public.js %>angular.min.js',
+                    '<%= dirs.mean.public.js %>ReStart.min.js',
+                    '<%= dirs.mean.public.js %>mkg.min.js'
                 ],
-                dest: '<%= dirs.web.js %>main.min.js'
+                dest: '<%= dirs.mean.public.js %>main.min.js'
             }
         },
         // Création du js modernizr en fonction de ce qui est utilisé
@@ -228,7 +238,7 @@ module.exports = function (grunt) {
     require('load-grunt-tasks')(grunt);
 
     //----- Groupement des tâches en un appel
-    grunt.registerTask('default', ['bower', 'copy', 'less', 'cssmin', 'uglify', 'concat', 'modernizr']);
+    grunt.registerTask('default', ['bower', 'modernizr', 'copy', 'less', 'cssmin', 'uglify', 'concat']);
     grunt.registerTask('watch', ['watch']);
     grunt.registerTask('install:mkg', ['copy:mkg', 'less', 'cssmin', 'uglify:mkg', 'concat']);
     grunt.registerTask('install:ReStart', ['copy:ReStart', 'less', 'cssmin', 'uglify:ReStart', 'concat']);

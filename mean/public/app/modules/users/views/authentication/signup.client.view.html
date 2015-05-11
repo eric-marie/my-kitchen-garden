@@ -1,0 +1,52 @@
+<div class="main" data-ng-controller="AuthenticationController">
+    <div class="container">
+        <section class="hgroup">
+            <h1>Inscription</h1>
+            <ul class="breadcrumb pull-right">
+                <li><a href="/#!/">Accueil</a></li>
+                <li class="active">Inscription</li>
+            </ul>
+        </section>
+        <section>
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <div class="signup">
+                        <form data-ng-submit="signup()">
+                            <div class="social_sign">
+                                <h3>Inscrivez-vous avec vos comptes de réseaux sociaux</h3>
+                                <a href="/auth/facebook" class="fb"><i class="fa fa-facebook"></i></a>
+                                <a href="/auth/twitter" class="tw"><i class="fa fa-twitter"></i></a>
+                                <a href="/auth/google" class="gp"><i class="fa fa-google-plus"></i></a>
+                            </div>
+                            <div class="or">
+                                <div class="or_l"></div>
+                                <span>ou</span>
+                                <div class="or_r"></div>
+                            </div>
+                            <p class="sign_title">Créez un compte My Kitchen Garden maintenant,<br />c'est simple &amp; gratuit !</p>
+                            <div class="row">
+                                <div class="col-lg-8 col-lg-offset-2">
+                                    <input type="text" required name="firstName" class="form-control" data-ng-model="credentials.firstName" placeholder="Prénom">
+                                    <input type="text" required name="lastName" class="form-control" data-ng-model="credentials.lastName" placeholder="Nom">
+                                    <input type="email" required name="email" class="form-control" data-ng-model="credentials.email" placeholder="Email">
+                                    <input type="text" required name="username" class="form-control" data-ng-model="credentials.username" placeholder="Nom d'utilisateur">
+                                    <input type="password" required name="password" class="form-control" data-ng-model="credentials.password" placeholder="Mot de passe">
+                                    <input type="password" required name="passwordConfirm" class="form-control" data-ng-model="credentials.passwordConfirm" placeholder="Confirmation de mot de passe">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input name="termsConditions" checked="false" type="checkbox" data-ng-model="credentials.termsConditions" /> J'accepte les <a href="/#!/mentions-legales?scrollTo=condition-utilisation">conditions d'utilisation</a>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-success btn-lg">Créez votre compte</button>
+                            <div data-ng-show="error" class="text-center text-danger">
+                                <strong data-ng-bind="error"></strong>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

@@ -1,0 +1,136 @@
+<!doctype html>
+<html class="no-js" lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- General META -->
+    <meta charset="utf-8"/>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+
+    <!-- Semantic META -->
+    <title>{{ title }}</title>
+    <meta name="keywords" content="{{ keywords }}"/>
+    <meta name="description" content="{{ description }}"/>
+
+    <!-- Facebook META -->
+    <meta property="fb:app_id" content="{{ facebookAppId }}"/>
+    <meta property="og:site_name" content="{{ title }}"/>
+    <meta property="og:title" content="{{ title }}"/>
+    <meta property="og:description" content="{{ description }}"/>
+    <meta property="og:url" content="{{ url }}"/>
+    <meta property="og:image" content="images/favicon/android-icon-192x192.png"/>
+    <meta property="og:type" content="website"/>
+
+    <!-- Twitter META -->
+    <meta name="twitter:title" content="{{ title }}"/>
+    <meta name="twitter:description" content="{{ description }}"/>
+    <meta name="twitter:url" content="{{ url }}"/>
+    <meta name="twitter:image" content="images/favicon/android-icon-192x192.png"/>
+
+    <!--Application CSS Files-->{% for cssFile in cssFiles %}
+    <link rel="stylesheet" href="{{ cssFile }}" />{% endfor %}
+
+    <!-- Fav Icon -->
+    <link rel="apple-touch-icon" sizes="57x57" href="images/favicon/apple-icon-57x57.png"/>
+    <link rel="apple-touch-icon" sizes="60x60" href="images/favicon/apple-icon-60x60.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="images/favicon/apple-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="76x76" href="images/favicon/apple-icon-76x76.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="images/favicon/apple-icon-114x114.png"/>
+    <link rel="apple-touch-icon" sizes="120x120" href="images/favicon/apple-icon-120x120.png"/>
+    <link rel="apple-touch-icon" sizes="144x144" href="images/favicon/apple-icon-144x144.png"/>
+    <link rel="apple-touch-icon" sizes="152x152" href="images/favicon/apple-icon-152x152.png"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-icon-180x180.png"/>
+    <link rel="icon" type="image/png" sizes="192x192" href="images/favicon/android-icon-192x192.png"/>
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png"/>
+    <link rel="icon" type="image/png" sizes="96x96" href="images/favicon/favicon-96x96.png"/>
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png"/>
+    <meta name="msapplication-TileImage" content="images/favicon/ms-icon-144x144.png"/>
+
+    <!-- HTML5 Shim -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body class="ng-cloak collapsing_header" data-ng-controller="MainController">
+<div id="fake-web-site">
+    {#<div class="alert alert-info alert-dismissible fade in" role="alert">#}
+        {#<button type="button" class="close" data-dismiss="alert"><span>×</span></button>#}
+        {#Attention, ce site web est <strong>fictif</strong>. Il s'agit d'un projet étudiant. Les informations y figurant#}
+        {#sont, pour tout ou parties, erronées.#}
+    {#</div>#}
+</div>
+<header>
+    <div class="container" data-ng-include="'/app/modules/core/views/header.client.view.html'"></div>
+</header>
+{% block content %}{% endblock %}
+<footer>
+    <section id="footer_teasers_wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="footer_teaser col-sm-4">
+                    <h3>A propos de nous</h3>
+
+                    <p>My Kitchen Garden est le projet tutoré d'un groupe d'étudiants de l'<a target="_blank" href="http://www.iutsf.u-pec.fr/">IUT de Sénart/Fontainebleau</a> en Licence Professionnelle Systèmes Informatiques et Logiciels (option Bases de Données Internet et Securité).</p>
+                    <p><i class="fa fa-map-marker"></i> Route Hurtault 77300 Fontainebleau</p>
+                    <p><i class="fa fa-phone"></i> (+33) 01.02.03.04.05</p>
+                    <p><i class="fa fa-print"></i> (+33) 01.02.03.04.05</p>
+                    <p><i class="fa fa-envelope"></i> contact@my-kitchen-garden.com</p>
+                </div>
+                <div class="footer_teaser col-sm-4">
+                    <h3>Derniers articles</h3>
+                    <ul class="media-list">
+                        <li class="media">
+                            <a href="layout.php?p=blog-post" class="media-date">1<span>AVR</span></a>
+                            <h5 class="media-heading">
+                                <a href="layout.php?p=blog-post">Fugiat dapibus, tellus ac cursus...</a>
+                            </h5>
+
+                            <p>Duis est enim, feugiat sit amet sollicitudin ut, mattis interdum quam. Ut euismod libero nec orci vulputate lobortis. Class aptent taciti sociosqu ad litora...</p>
+                        </li>
+                        <li class="media">
+                            <a href="layout.php?p=blog-post" class="media-date">1<span>AVR</span></a>
+                            <h5 class="media-heading">
+                                <a href="layout.php?p=blog-post">Fugiat dapibus, tellus ac cursus...</a>
+                            </h5>
+
+                            <p>Duis est enim, feugiat sit amet sollicitudin ut, mattis interdum quam. Ut euismod libero nec orci vulputate lobortis. Class aptent taciti sociosqu ad litora...</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer_teaser col-sm-4" id="latest-flickr-images">
+                    <h3>Flux Flickr</h3>
+                    <!-- Ne pas supprimer cet UL : contient les photos flickr -->
+                    <ul></ul>
+                    <p>Toutes les photos © par <a target="_blank" href="https://www.flickr.com/photos/rerinha/">Vanessa Dualib</a>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    Copyright ©2014-2015 tous droits réservés
+                </div>
+                <div class="text-center col-sm-4">
+                    <a href="/#!/contact">Contactez-nous</a>
+                    &nbsp;|&nbsp;
+                    <a href="/#!/mentions-legales">Mentions légales</a>
+                </div>
+                <div class="text-right col-sm-4">
+                    Directed by <a target="_blank" href="http://www.iut-fbleau.fr/">IUT de Fontainebleau</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</footer>
+<!--Embedding The User Object-->
+<script type="text/javascript">
+    var user = {{ user | json | safe }};
+</script>
+<!--Application JavaScript Files-->{% for jsFile in jsFiles %}
+<script type="text/javascript" charset="UTF-8" src="{{ jsFile }}"></script>{% endfor %}
+</body>
+</html>

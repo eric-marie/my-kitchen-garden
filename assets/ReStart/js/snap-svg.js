@@ -1,5 +1,6 @@
 (function () {
-    function init() {
+    window.ReStart = window.ReStart || {};
+    window.ReStart.snapSvg = function() {
         var speed = 330,
             easing = mina.backout;
 
@@ -18,7 +19,7 @@
                 path.animate({'path': pathConfig.from}, speed, easing);
             });
         });
-    }
+    };
 
-    init();
+    window.ReStart.snapSvg();
 })();

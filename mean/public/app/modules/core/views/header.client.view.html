@@ -1,0 +1,58 @@
+<div data-ng-controller="HeaderController">
+    <div class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/#!/">
+                <img src="images/logo.png" alt="logo de My Kitchen Garden"/>
+                <span class="logo_title">My Kitchen Garden</span>
+                <span class="logo_subtitle">Mon aide potagère !</span>
+            </a>
+            <a class="btn btn-navbar btn-default navbar-toggle" data-ng-click="toggleCollapsibleMenu()">
+            <span class="nb_left pull-left">
+                <span class="fa fa-reorder"></span>
+            </span>
+                <span class="nb_right pull-right">menu</span>
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
+            <ul class="nav pull-right navbar-nav">
+                <li data-ng-repeat="item in menu.items | orderBy: 'position'"
+                    data-ng-if="item.shouldRender(authentication.user);"
+                    ui-route="{{item.uiRoute}}" class="{{item.menuItemClass}}" ng-class="{active: ($uiRoute)}">
+                    <a href="/#!/{{item.link}}" data-ng-bind="item.title"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="social_media_wrapper">
+        <a target="_blank" href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
+        <a target="_blank" href="https://twitter.com/"><i class="fa fa-twitter"></i></a>
+        <a target="_blank" href="https://plus.google.com/"><i class="fa fa-google-plus"></i></a>
+    </div>
+    <div id="sign">
+        <div data-ng-hide="authentication.user">
+            <a href="/#!/signup">Inscription</a>
+            &nbsp;|&nbsp;
+            <a href="/#!/signin">Connexion</a>
+        </div>
+        <div data-ng-show="authentication.user">
+        <span class="dropdown" dropdown>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" dropdown-toggle>
+                <i class="fa fa-user"></i> <span data-ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                    <a href="/#!/settings/profile">Modifier le profil</a>
+                </li>
+                <li>
+                    <a href="/#!/settings/accounts">Gérer les comptes de réseaux sociaux</a>
+                </li>
+                <li data-ng-show="authentication.user.provider === 'local'">
+                    <a href="/#!/settings/password">Changer de mot de passe</a>
+                </li>
+            </ul>
+        </span>
+            &nbsp;|&nbsp;
+            <a href="/auth/signout"><i class="fa fa-sign-out"></i> Déconnexion</a>
+        </div>
+    </div>
+</div>
