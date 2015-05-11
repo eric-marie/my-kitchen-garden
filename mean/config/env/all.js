@@ -27,5 +27,15 @@ module.exports = {
 			'public/app/modules/*/*.js',
 			'public/app/modules/**/*.js'
 		]
-	}
+	},
+    mailer: {
+        from: process.env.MAILER_FROM || 'my.kit.gar@gmail.com',
+        options: {
+            service: process.env.MAILER_SERVICE_PROVIDER || 'Gmail',
+            auth: {
+                user: process.env.MAILER_EMAIL_ID || 'my.kit.gar@gmail.com',
+                pass: process.env.MAILER_PASSWORD || 'my-kitchen-garden'
+            }
+        }
+    }
 };
