@@ -9,6 +9,10 @@
     "type": "git",
     "url": "git://github.com/eric-marie/my-kitchen-garden.git"
   },
+  "scripts": {
+    "start": "node mean/server.js && node mean/bin/mri-server.js",
+    "postinstall": "grunt && cd mean && npm install"
+  },
   "devDependencies": {
     "grunt": "0.4.*",
     "grunt-bower-task": "0.4.*",
