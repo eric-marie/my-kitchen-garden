@@ -10,7 +10,7 @@
     "url": "git://github.com/eric-marie/my-kitchen-garden.git"
   },
   "scripts": {
-    "start": "cd mean && node server.js && node bin/mri-server.js",
+    "start": "cd mean && NODE_ENV=production node server.js && node bin/mri-server.js",
     "postinstall": "./node_modules/grunt-cli/bin/grunt && cd mean && npm install"
   },
   "dependencies": {
