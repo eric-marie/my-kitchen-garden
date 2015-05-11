@@ -13,7 +13,7 @@
     "start": "node mean/server.js && node mean/bin/mri-server.js",
     "postinstall": "./node_modules/grunt-cli/bin/grunt && cd mean && npm install"
   },
-  "devDependencies": {
+  "dependencies": {
     "grunt": "0.4.*",
     "grunt-bower-task": "0.4.*",
     "grunt-cli": "0.1.*",
