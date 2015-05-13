@@ -1,6 +1,6 @@
 (function($) {
     $(document).ready(function () {
-        var url = 'http://api.flickr.com/services/feeds/photos_public.gne?id=30211629@N03&tags=vegetables&format=json&lang=fr-fr&jsoncallback=?';
+        var url = window.location.protocol + '//api.flickr.com/services/feeds/photos_public.gne?id=30211629@N03&tags=vegetables&format=json&lang=fr-fr&jsoncallback=?';
         $.getJSON(url, function (data) {
             var target = $('ul', $('#latest-flickr-images'));
             for (var i = 0; i <= 9; i = i + 1) {
