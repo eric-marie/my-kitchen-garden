@@ -10,22 +10,12 @@ module.exports = {
 	sessionSecret: 'mk6-1n-4-m34n-574ck-w17h-l337-5p34k',
 	sessionCollection: 'sessions',
 	assets: {
-		lib: {
-			css: [
-				'public/css/main.min.css'
-			],
-			js: [
-				'public/js/main.min.js'
-			]
-		},
 		css: [
-			'public/app/modules/**/css/*.css'
+            '/css/main.min.css'
 		],
 		js: [
-			'public/app/config.js',
-			'public/app/application.js',
-			'public/app/modules/*/*.js',
-			'public/app/modules/**/*.js'
+            '/js/main.min.js',
+			'/js/angular-app.min.js'
 		]
 	},
     mailer: {

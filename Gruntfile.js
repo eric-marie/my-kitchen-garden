@@ -29,6 +29,7 @@ module.exports = function (grunt) {
                 bin: '<%= dirs.mean.root %>bin/',
                 public: {
                     root: '<%= dirs.mean.root %>public/',
+                    app: '<%= dirs.mean.public.root %>app/',
                     images: '<%= dirs.mean.public.root %>images/',
                     js: '<%= dirs.mean.public.root %>js/',
                     css: '<%= dirs.mean.public.root %>css/',
@@ -158,7 +159,8 @@ module.exports = function (grunt) {
                         '<%= dirs.bower_components %>angular-sanitize/angular-sanitize.min.js',
                         '<%= dirs.bower_components %>angular-ui-router/release/angular-ui-router.min.js',
                         '<%= dirs.bower_components %>angular-ui-utils/ui-utils.min.js',
-                        '<%= dirs.bower_components %>angular-bootstrap/ui-bootstrap-tpls.min.js'
+                        '<%= dirs.bower_components %>angular-bootstrap/ui-bootstrap-tpls.min.js',
+                        '<%= dirs.bower_components %>angular-loading-bar/build/loading-bar.js'
                     ]
                 }
             },
@@ -178,6 +180,19 @@ module.exports = function (grunt) {
                 files: {
                     '<%= dirs.mean.public.js %>mkg.min.js': [
                         //'<%= dirs.assets.js %>test.js'
+                    ]
+                }
+            },
+            angularApp: {
+                files: {
+                    '<%= dirs.mean.public.js %>angular-app.min.js': [
+                        '<%= dirs.mean.public.app %>config.js',
+                        '<%= dirs.mean.public.app %>application.js',
+                        '<%= dirs.mean.public.app %>**/*.client.module.js',
+                        '<%= dirs.mean.public.app %>**/config/*.js',
+                        '<%= dirs.mean.public.app %>**/controllers/*.js',
+                        '<%= dirs.mean.public.app %>**/services/*.js',
+                        '<%= dirs.mean.public.app %>**/config/*.js'
                     ]
                 }
             }
@@ -224,11 +239,20 @@ module.exports = function (grunt) {
             js: {
                 files: [
                     '<%= dirs.assets.js %>*.js',
-                    '<%= dirs.assets.js %>*/*.js'
+                    '<%= dirs.assets.js %>**/*.js'
                 ],
                 tasks: [
                     'uglify:mkg',
                     'concat:concat'
+                ]
+            },
+            angularApp: {
+                files: [
+                    '<%= dirs.mean.public.app %>*.js',
+                    '<%= dirs.mean.public.app %>**/*.js'
+                ],
+                tasks: [
+                    'uglify:angularApp'
                 ]
             }
         }
@@ -239,7 +263,7 @@ module.exports = function (grunt) {
 
     //----- Groupement des tâches en un appel
     grunt.registerTask('default', ['bower', 'modernizr', 'copy', 'less', 'cssmin', 'uglify', 'concat']);
-    grunt.registerTask('watch', ['watch']);
+    grunt.registerTask('watch Angular application', ['watch:angularApp']);
     grunt.registerTask('install:mkg', ['copy:mkg', 'less', 'cssmin', 'uglify:mkg', 'concat']);
     grunt.registerTask('install:ReStart', ['copy:ReStart', 'less', 'cssmin', 'uglify:ReStart', 'concat']);
 };
