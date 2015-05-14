@@ -28,13 +28,13 @@
                                 <div class="col-lg-8 col-lg-offset-2">
                                     <input type="text" required name="firstName" class="form-control" data-ng-model="credentials.firstName" placeholder="Prénom">
                                     <input type="text" required name="lastName" class="form-control" data-ng-model="credentials.lastName" placeholder="Nom">
-                                    <input type="email" required name="email" class="form-control" data-ng-model="credentials.email" placeholder="Email">
+                                    <input type="email" required name="email" class="form-control" data-ng-model="credentials.email" data-ng-model-options="{ updateOn: 'blur' }" placeholder="Email">
                                     <input type="text" required name="username" class="form-control" data-ng-model="credentials.username" placeholder="Nom d'utilisateur">
                                     <input type="password" required name="password" class="form-control" data-ng-model="credentials.password" placeholder="Mot de passe">
                                     <input type="password" required name="passwordConfirm" class="form-control" data-ng-model="credentials.passwordConfirm" placeholder="Confirmation de mot de passe">
                                     <div class="checkbox">
                                         <label>
-                                            <input name="termsConditions" checked="false" type="checkbox" data-ng-model="credentials.termsConditions" /> J'accepte les <a href="/#!/mentions-legales?scrollTo=condition-utilisation">conditions d'utilisation</a>
+                                            <input name="termsConditions" checked="false" type="checkbox" data-ng-model="credentials.termsConditions" /> J'accepte les <a href="/#!/disclaimer#terms-of-use">conditions d'utilisation</a>
                                         </label>
                                     </div>
                                 </div>

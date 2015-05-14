@@ -30,6 +30,7 @@ module.exports = {
 	},
     mailer: {
         from: process.env.MAILER_FROM || 'my.kit.gar@gmail.com',
+        contact: process.env.MAILER_FROM || 'my.kit.gar@gmail.com',
         options: {
             service: process.env.MAILER_SERVICE_PROVIDER || 'Gmail',
             auth: {

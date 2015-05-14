@@ -17,7 +17,7 @@
             <ul class="nav pull-right navbar-nav">
                 <li data-ng-repeat="item in menu.items | orderBy: 'position'"
                     data-ng-if="item.shouldRender(authentication.user);"
-                    ui-route="{{item.uiRoute}}" class="{{item.menuItemClass}}" ng-class="{active: ($uiRoute)}">
+                    ui-route="{{item.uiRoute}}" class="{{item.menuItemClass}}" data-ng-class="{active: ($uiRoute)}">
                     <a href="/#!/{{item.link}}" data-ng-bind="item.title"></a>
                 </li>
             </ul>
