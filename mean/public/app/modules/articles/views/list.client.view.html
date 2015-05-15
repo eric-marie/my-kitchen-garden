@@ -1,0 +1,46 @@
+<div class="main" data-ng-controller="ArticlesController" data-ng-init="find()">
+    <div class="container">
+        <section class="hgroup">
+            <div class="clearfix">
+                <h1 class="pull-left">Blog</h1>
+                <div class="pull-right" data-ng-show="isAdmin">
+                    <a class="btn btn-success" href="/#!/articles/create">
+                        <i class="fa fa-plus"></i>
+                    </a>
+                </div>
+            </div>
+            <ul class="breadcrumb">
+                <li><a href="/#!/">Accueil</a></li>
+                <li class="active">Blog</li>
+            </ul>
+        </section>
+        <section>
+            <div class="row">
+                <div id="leftcol" class="col-sm-8 col-md-8">
+                    <article class="post" data-ng-href="#!/articles/{{article._id}}"
+                             data-ng-repeat="article in articles | filter: { category: categorySearch } | limitTo: offset - articles.length | limitTo: pageSize">
+                        <div class="post_header">
+                            <h3 class="post_title"><a href="/#!/articles/{{ article._id }}" data-ng-bind="article.name"></a></h3>
+                            <div class="post_sub">
+                                <i class="fa fa-calendar"></i> {{ article.created | date : 'dd/MM/yyyy' }}
+                                <!--<a href="/#!/articles/{{ article._id }}#post_comments"><i class="fa-comments-alt"></i>6 commentaires</a>-->
+                            </div>
+                        </div>
+                        <div class="post_content">
+                            <p data-ng-bind-html="(article.description | limitTo : 100 : 0) + ' [...]'"></p>
+                            <a href="/#!/articles/{{ article._id }}" class="btn btn-primary">Lire la suite</a>
+                        </div>
+                    </article>
+                    <pagination total-items="articles.length + 1" data-ng-model="currentPage" data-ng-change="pageChanged()"
+                                max-size="pageSize" data-ng-show="articles.length > pageSize" rotate="false"
+                                previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
+                            ></pagination>
+                    <div class="alert alert-warning text-center" data-ng-hide="!articles.$resolved || articles.length || !isAdmin">
+                        Pas encore d'article. Pourquoi ne pas en <a href="/#!/articles/create">créer un</a> ?
+                    </div>
+                </div>
+                <ng-include src="'/app/modules/articles/views/sidebar.client.view.html'"></ng-include>
+            </div>
+        </section>
+    </div>
+</div>

@@ -13,13 +13,19 @@ angular.module('records').controller('RecordsController', [
     function ($scope, $stateParams, $location, $http, Upload, RecordPhoto, Authentication, Records, Roles) {
         $scope.authentication = Authentication;
         $scope.currentPage = 1;
-        $scope.pageSize = 10;
+        $scope.pageSize = 9;
         $scope.offset = 0;
         $scope.isAdmin = Roles.isAdmin($scope.authentication.user);
 
         // Page changed handler
         $scope.pageChanged = function () {
             $scope.offset = ($scope.currentPage - 1) * $scope.pageSize;
+            // Relance les script ReStart
+            for(var func in window.ReStart) {
+                if(window.ReStart.hasOwnProperty(func)) {
+                    window.ReStart[func]();
+                }
+            }
         };
 
         // Create new Record
@@ -34,10 +40,9 @@ angular.module('records').controller('RecordsController', [
 
             // Redirect after save
             record.$save(function (response) {
-                $location.path('records/' + response._id);
-
                 // Clear form fields
-                $scope.name = '';
+                $scope.record = {};
+                $location.path('records/' + response._id);
             }, function (errorResponse) {
                 $scope.error = errorResponse.data.message;
             });

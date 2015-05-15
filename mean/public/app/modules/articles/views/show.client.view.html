@@ -1,0 +1,25 @@
+<div class="main" data-ng-controller="ArticlesController" data-ng-init="findOne()">
+    <div class="container">
+        <section class="hgroup">
+            <div class="clearfix">
+                <h1 class="pull-left">Blog</h1>
+                <div class="pull-right" data-ng-show="isAdmin">
+                    <a class="btn btn-primary" href="/#!/articles/{{article._id}}/edit">
+                        <i class="fa fa-pencil"></i>
+                    </a>
+                    <a class="btn btn-danger" data-ng-click="remove()">
+                        <i class="fa fa-trash"></i>
+                    </a>
+                </div>
+            </div>
+            <ul class="breadcrumb">
+                <li><a href="/#!/">Accueil</a></li>
+                <li><a href="/#!/articles">Blog</a></li>
+            </ul>
+        </section>
+        <section>
+            <h3>{{ article.name }} <small>{{ article.category[0] }}</small></h3>
+            <p data-ng-bind-html="article.description"></p>
+        </section>
+    </div>
+</div>

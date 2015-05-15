@@ -41,15 +41,13 @@
                     </div>
                 </div>
             </section>
-            <pagination total-items="records.length" data-ng-model="currentPage" data-ng-change="pageChanged()" max-size="pageSize" data-ng-show="records.length > pageSize"></pagination>
+            <pagination total-items="records.length + 1" data-ng-model="currentPage" data-ng-change="pageChanged()"
+                        max-size="pageSize" data-ng-show="records.length > pageSize" rotate="false"
+                        previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
+                    ></pagination>
             <div class="alert alert-warning text-center" data-ng-hide="!records.$resolved || records.length || !isAdmin">
                 Pas encore de fiche. Pourquoi ne pas en <a href="/#!/records/create">créer une</a> ?
             </div>
         </section>
     </div>
-</div>
-
-
-<div class="list-group">
-
 </div>

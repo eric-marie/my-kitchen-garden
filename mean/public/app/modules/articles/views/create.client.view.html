@@ -1,0 +1,45 @@
+<div class="main" data-ng-controller="ArticlesController">
+    <div class="container">
+        <section class="hgroup">
+            <h1>Blog</h1>
+            <ul class="breadcrumb pull-right">
+                <li><a href="/#!/">Accueil</a></li>
+                <li><a href="/#!/articles">Blog</a></li>
+            </ul>
+        </section>
+        <section>
+            <h3 data-ng-bind="article.name"></h3>
+            <form data-ng-submit="create()" novalidate>
+                <label class="control-label" for="name">Nom</label>
+                <div class="controls">
+                    <input type="text" data-ng-model="article.name" id="name" class="form-control" placeholder="Nom" required>
+                </div>
+
+                <label class="control-label" for="category">Catégorie</label>
+                <div class="controls">
+                    <select ng-init="article.category[0] = 'Technique'" data-ng-model="article.category[0]"
+                            id="category" class="form-control" placeholder="Catégorie" required>
+                        <option value="Technique">Technique</option>
+                        <option value="Fruits">Fruit</option>
+                    </select>
+                </div>
+
+                <label class="control-label" for="description">Description</label>
+                <div class="controls">
+                    <textarea name="description" data-ng-model="article.description" id="description" class="form-control" cols="30" rows="10" placeholder="Description" required></textarea>
+                </div>
+
+                <div class="text-center margin-top">
+                    <input type="submit" value="Créer" class="btn btn-success">
+                </div>
+
+                <div data-ng-show="error" class="text-danger">
+                    <strong data-ng-bind="error"></strong>
+                </div>
+
+                <h3>Aperçu du contenu</h3>
+                <div data-ng-bind-html="article.description"></div>
+            </form>
+        </section>
+    </div>
+</div>
