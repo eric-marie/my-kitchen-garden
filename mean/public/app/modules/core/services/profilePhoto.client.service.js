@@ -9,7 +9,7 @@ angular.module('core').service('ProfilePhoto', [
         this.getProfilePhoto = function(user) {
             var profilePhoto = '/images/logo.png';
             if(user && user.profilePhoto) {
-                profilePhoto = '/upload/' + user._id + '.' + user.profilePhoto + '?' + timestamp;
+                profilePhoto = '/upload/profile-photo/' + user._id + '.' + user.profilePhoto + '?' + timestamp;
             }
             return profilePhoto;
         }

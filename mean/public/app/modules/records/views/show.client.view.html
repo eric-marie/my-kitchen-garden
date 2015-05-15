@@ -1,0 +1,26 @@
+<div class="main" data-ng-controller="RecordsController" data-ng-init="findOne()">
+    <div class="container">
+        <section class="hgroup">
+            <div class="clearfix">
+                <h1 class="pull-left">Fiches</h1>
+                <div class="pull-right" data-ng-show="isAdmin">
+                    <a class="btn btn-primary" href="/#!/records/{{record._id}}/edit">
+                        <i class="fa fa-pencil"></i>
+                    </a>
+                    <a class="btn btn-danger" data-ng-click="remove()">
+                        <i class="fa fa-trash"></i>
+                    </a>
+                </div>
+            </div>
+            <ul class="breadcrumb">
+                <li><a href="/#!/">Accueil</a></li>
+                <li><a href="/#!/records">Fiches</a></li>
+            </ul>
+        </section>
+        <section>
+            <img data-ng-src="{{ getRecordPhoto(record) }}" class="record-photo"/>
+            <h3>{{ record.name }} <small>{{ record.category[0] }}</small></h3>
+            <p data-ng-bind-html="record.description"></p>
+        </section>
+    </div>
+</div>

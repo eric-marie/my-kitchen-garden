@@ -43,7 +43,7 @@ exports.update = function (req, res) {
         // Profile's photo upload
         if (req.files) {
             var publicDir = __dirname.replace('app/controllers/users', 'public'),
-                uploadDir = publicDir + config.uploadDir,
+                uploadDir = publicDir + config.uploadDir.profilePhoto,
                 file = req.files.file;
             var nameParts = file.originalFilename.split('.');
             var fileExtension = nameParts[nameParts.length - 1];
@@ -80,7 +80,7 @@ exports.uploadPhoto = function (req, res) {
 
     if (user) {
         var publicDir = __dirname.replace('app/controllers/users', 'public'),
-            uploadDir = publicDir + config.uploadDir,
+            uploadDir = publicDir + config.uploadDir.profilePhoto,
             file = req.files.file;
         var nameParts = file.originalFilename.split('.');
         var fileExtension = nameParts[nameParts.length - 1];
@@ -114,7 +114,7 @@ exports.deletePhoto = function (req, res) {
     if (user) {
         if (user.profilePhoto) {
             var publicDir = __dirname.replace('app/controllers/users', 'public'),
-                uploadDir = publicDir + config.uploadDir;
+                uploadDir = publicDir + config.uploadDir.profilePhoto;
             fs.unlink(uploadDir + user._id + '.' + user.profilePhoto, function () {});
 
             user.profilePhoto = undefined;

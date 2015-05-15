@@ -29,5 +29,8 @@ module.exports = {
             }
         }
     },
-    uploadDir: '/upload/'
+    uploadDir: {
+        profilePhoto: '/upload/profile-photo/',
+        recordPhoto: '/upload/record-photo/'
+    }
 };

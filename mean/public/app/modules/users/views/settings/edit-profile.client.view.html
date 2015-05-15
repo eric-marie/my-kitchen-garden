@@ -46,11 +46,11 @@
                                          ngf-select
                                          ngf-multiple="false"
                                          ngf-allow-dir="false"
-                                         ngf-accept="'.jpg,.jpeg,.gif,.png,.pdf'"
+                                         ngf-accept="'.jpg,.jpeg,.gif,.png'"
                                          ngf-change="uploadProfilePhoto($files)">{{ user.profilePhoto ? 'Modifier' : 'Ajouter' }}</div>
                                     <button type="button" class="btn btn-danger" data-ng-show="user.profilePhoto" data-ng-click="deleteProfilePhoto()">Supprimer</button>
                                 </div>
-                                <p>Seuls les fichiers PNG, GIF et JPEG sont autorisés.</p>
+                                <p>.jpg, .jpeg, .gif ou .png</p>
                             </div>
                         </div>
                     </div>

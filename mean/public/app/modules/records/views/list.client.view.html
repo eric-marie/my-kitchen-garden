@@ -1,0 +1,55 @@
+<div class="main" data-ng-controller="RecordsController" data-ng-init="find()">
+    <div class="container">
+        <section class="hgroup">
+            <div class="clearfix">
+                <h1 class="pull-left">Fiches</h1>
+                <div class="pull-right" data-ng-show="isAdmin">
+                    <a class="btn btn-success" href="/#!/records/create">
+                        <i class="fa fa-plus"></i>
+                    </a>
+                </div>
+            </div>
+            <ul class="breadcrumb">
+                <li><a href="/#!/">Accueil</a></li>
+                <li class="active">Fiches</li>
+            </ul>
+        </section>
+        <section>
+            <div class="form-group">
+                <input type="text" data-ng-model="search" typeahead="record as record.name for record in records | filter:$viewValue | limitTo:9" class="form-control" typeahead-on-select="recordSearch($item)" placeholder="Chercher une fiche">
+            </div>
+            <section class="portfolio_strict">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" data-ng-repeat="record in records | limitTo: offset - records.length | limitTo: pageSize" data-ng-href="#!/records/{{record._id}}">
+                        <div class="portfolio_item">
+                            <a href="/#!/records/{{ record._id }}" data-path-hover="M 180,190 0,158 0,0 180,0 z">
+                                <figure background-image="{{ getRecordPhoto(record) }}">
+                                    <svg viewBox="0 0 180 320" preserveAspectRatio="none">
+                                        <path d="M180,0C180,0,0,0,0,0C0,0,0,0,0,0C0,0,180,0,180,0C180,0,180,0,180,0"></path>
+                                    </svg>
+                                    <figcaption>
+                                        <p data-ng-bind-html="(record.description | limitTo : 100 : 0) + ' ...[Lire la suite]'"></p>
+                                        <div class="view_button">Voir</div>
+                                    </figcaption>
+                                </figure>
+                            </a>
+                            <div class="portfolio_description">
+                                <h3><a href="/#!/records/{{ record._id }}" data-ng-bind="record.name"></a></h3>
+                                <p data-ng-bind="record.category"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <pagination total-items="records.length" data-ng-model="currentPage" data-ng-change="pageChanged()" max-size="pageSize" data-ng-show="records.length > pageSize"></pagination>
+            <div class="alert alert-warning text-center" data-ng-hide="!records.$resolved || records.length || !isAdmin">
+                Pas encore de fiche. Pourquoi ne pas en <a href="/#!/records/create">créer une</a> ?
+            </div>
+        </section>
+    </div>
+</div>
+
+
+<div class="list-group">
+
+</div>

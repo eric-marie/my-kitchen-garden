@@ -193,7 +193,7 @@ module.exports = function (grunt) {
                         '<%= dirs.mean.public.app %>**/config/*.js',
                         '<%= dirs.mean.public.app %>**/controllers/*.js',
                         '<%= dirs.mean.public.app %>**/services/*.js',
-                        '<%= dirs.mean.public.app %>**/config/*.js'
+                        '<%= dirs.mean.public.app %>**/directive/*.js'
                     ]
                 }
             }
@@ -264,7 +264,7 @@ module.exports = function (grunt) {
 
     //----- Groupement des tâches en un appel
     grunt.registerTask('default', ['bower', 'modernizr', 'copy', 'less', 'cssmin', 'uglify', 'concat']);
-    grunt.registerTask('watch Angular application', ['watch:angularApp']);
+    grunt.registerTask('watch Angular application', ['uglify:angularApp', 'watch:angularApp']);
     grunt.registerTask('install:mkg', ['copy:mkg', 'less', 'cssmin', 'uglify:mkg', 'concat']);
     grunt.registerTask('install:ReStart', ['copy:ReStart', 'less', 'cssmin', 'uglify:ReStart', 'concat']);
     grunt.registerTask('install:bower_componants', ['copy:bower_componants', 'less', 'cssmin', 'uglify:bower_componants', 'concat']);

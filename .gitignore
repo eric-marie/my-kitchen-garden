@@ -23,4 +23,7 @@
 /mean/public/css/
 
 # Dossier d'upload
-/mean/public/upload/
+/mean/public/upload/profile-photo/*
+!/mean/public/upload/profile-photo/.gitkeep
+/mean/public/upload/record-photo/*
+!/mean/public/upload/record-photo/.gitkeep
