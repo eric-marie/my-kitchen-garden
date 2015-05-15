@@ -9,23 +9,48 @@
         </section>
         <section>
             <div class="row">
-                <div class="col-sm-6 col-sm-offset-3">
-                    <div class="signin">
-                        <div class="row">
-                            <div class="form col-lg-8 col-lg-offset-2">
-                                <form name="userForm" data-ng-submit="updateUserProfile(userForm.$valid)" autocomplete="off">
-                                    <input type="text" name="firstName" class="form-control" data-ng-model="user.firstName" placeholder="Prénom">
-                                    <input type="text" name="lastName" class="form-control" data-ng-model="user.lastName" placeholder="Nom de famille">
-                                    <input type="email" name="email" class="form-control" data-ng-model="user.email" placeholder="Email">
-                                    <input type="text" name="username" class="form-control" data-ng-model="user.username" placeholder="Nom d'utilisateur">
-                                    <button type="submit" class="btn btn-large btn-primary">Enregistrer le profil</button>
-                                    <div data-ng-show="success" class="text-center text-success">
-                                        <strong>Profile Saved Successfully</strong>
+                <div class="col-sm-6">
+                    <div class="row">
+                        <div class="col-sm-10 col-sm-offset-1">
+                            <div class="signin row">
+                                <div class="form col-lg-8 col-lg-offset-2">
+                                    <form name="userForm" data-ng-submit="updateUserProfile(userForm.$valid)" autocomplete="off">
+                                        <input type="text" name="firstName" class="form-control" data-ng-model="user.firstName" placeholder="Prénom">
+                                        <input type="text" name="lastName" class="form-control" data-ng-model="user.lastName" placeholder="Nom de famille">
+                                        <input type="email" name="email" class="form-control" data-ng-model="user.email" placeholder="Email">
+                                        <input type="text" name="username" class="form-control" data-ng-model="user.username" placeholder="Nom d'utilisateur">
+                                        <button type="submit" class="btn btn-large btn-primary">Enregistrer le profil</button>
+                                        <div data-ng-show="success" class="text-center text-success">
+                                            <strong>Profile Saved Successfully</strong>
+                                        </div>
+                                        <div data-ng-show="error" class="text-center text-danger">
+                                            <strong data-ng-bind="error"></strong>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="row">
+                        <div class="col-sm-10 col-sm-offset-1">
+                            <div class="signin row">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <img ng-src="{{ getProfilePhoto(user) }}" class="profile-photo">
                                     </div>
-                                    <div data-ng-show="error" class="text-center text-danger">
-                                        <strong data-ng-bind="error"></strong>
-                                    </div>
-                                </form>
+                                </div>
+                                <div class="text-center">
+                                    <div class="btn btn-success"
+                                         ngf-select
+                                         ngf-multiple="false"
+                                         ngf-allow-dir="false"
+                                         ngf-accept="'.jpg,.jpeg,.gif,.png,.pdf'"
+                                         ngf-change="uploadProfilePhoto($files)">{{ user.profilePhoto ? 'Modifier' : 'Ajouter' }}</div>
+                                    <button type="button" class="btn btn-danger" data-ng-show="user.profilePhoto" data-ng-click="deleteProfilePhoto()">Supprimer</button>
+                                </div>
+                                <p>Seuls les fichiers PNG, GIF et JPEG sont autorisés.</p>
                             </div>
                         </div>
                     </div>

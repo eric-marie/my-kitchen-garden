@@ -28,5 +28,6 @@ module.exports = {
                 pass: process.env.MAILER_PASSWORD || 'my-kitchen-garden'
             }
         }
-    }
+    },
+    uploadDir: '/images/upload/'
 };

@@ -3,7 +3,9 @@
 /**
  * Module dependencies.
  */
-var passport = require('passport');
+var passport = require('passport'),
+    multiparty = require('connect-multiparty'),
+    multipartyMiddleware = multiparty();
 
 module.exports = function(app) {
 	// User Routes
@@ -12,6 +14,8 @@ module.exports = function(app) {
 	// Setting up the users profile api
 	app.route('/users/me').get(users.me);
 	app.route('/users').put(users.update);
+	app.route('/users/upload-photo').post(multipartyMiddleware, users.uploadPhoto);
+	app.route('/users/delete-photo').get(multipartyMiddleware, users.deletePhoto);
 	app.route('/users/accounts').delete(users.removeOAuthProvider);
 
 	// Setting up the users password api

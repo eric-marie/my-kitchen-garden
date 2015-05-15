@@ -37,7 +37,7 @@
         <div data-ng-show="authentication.user">
         <span class="dropdown" dropdown>
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" dropdown-toggle>
-                <i class="fa fa-user"></i> <span data-ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
+                <img ng-src="{{ getProfilePhoto(authentication.user) }}" class="profile-photo-mini"> <span data-ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
                 <li>

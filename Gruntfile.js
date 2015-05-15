@@ -160,7 +160,8 @@ module.exports = function (grunt) {
                         '<%= dirs.bower_components %>angular-ui-router/release/angular-ui-router.min.js',
                         '<%= dirs.bower_components %>angular-ui-utils/ui-utils.min.js',
                         '<%= dirs.bower_components %>angular-bootstrap/ui-bootstrap-tpls.min.js',
-                        '<%= dirs.bower_components %>angular-loading-bar/build/loading-bar.js'
+                        '<%= dirs.bower_components %>angular-loading-bar/build/loading-bar.js',
+                        '<%= dirs.bower_components %>ng-file-upload/ng-file-upload.min.js'
                     ]
                 }
             },
@@ -266,4 +267,6 @@ module.exports = function (grunt) {
     grunt.registerTask('watch Angular application', ['watch:angularApp']);
     grunt.registerTask('install:mkg', ['copy:mkg', 'less', 'cssmin', 'uglify:mkg', 'concat']);
     grunt.registerTask('install:ReStart', ['copy:ReStart', 'less', 'cssmin', 'uglify:ReStart', 'concat']);
+    grunt.registerTask('install:bower_componants', ['copy:bower_componants', 'less', 'cssmin', 'uglify:bower_componants', 'concat']);
+    grunt.registerTask('install:Angular', ['uglify:angular', 'concat']);
 };

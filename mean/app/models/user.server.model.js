@@ -37,10 +37,14 @@ var UserSchema = new Schema({
 		default: '',
 		validate: [validateLocalStrategyProperty, 'Please fill in your last name']
 	},
-	displayName: {
-		type: String,
-		trim: true
-	},
+    displayName: {
+        type: String,
+        trim: true
+    },
+    profilePhoto: {
+        type: String,
+        trim: true
+    },
 	email: {
 		type: String,
 		trim: true,
