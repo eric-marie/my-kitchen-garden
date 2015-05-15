@@ -1,6 +1,5 @@
 'use strict';
 
-// Setting up route
 angular.module('contact').config(['$stateProvider',
 	function($stateProvider) {
         $stateProvider

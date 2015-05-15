@@ -79,6 +79,7 @@ angular.module('users').controller('SettingsController', [
                     file: file
                 }).success(function (response) {
                     $scope.user = Authentication.user = response;
+                    ProfilePhoto.refreshTimestamp();
                 });
             }
         };

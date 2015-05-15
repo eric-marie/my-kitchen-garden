@@ -1,9 +1,7 @@
 'use strict';
 
-// Setting up route
 angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 	function($stateProvider, $urlRouterProvider) {
-		// Redirection vers Error404 s'il n'y a pas de route
 		$urlRouterProvider.otherwise('/404');
 
         $stateProvider

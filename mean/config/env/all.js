@@ -29,5 +29,5 @@ module.exports = {
             }
         }
     },
-    uploadDir: '/images/upload/'
+    uploadDir: '/upload/'
 };

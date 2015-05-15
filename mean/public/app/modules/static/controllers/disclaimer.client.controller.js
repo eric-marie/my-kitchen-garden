@@ -2,7 +2,6 @@
 
 angular.module('static').controller('DisclaimerController', ['$scope', '$sce', '$location', 'Authentication',
     function($scope, $sce, $location, Authentication) {
-        // This provides Authentication context.
         $scope.authentication = Authentication;
 
         if('terms-of-use' == $location.hash()) {

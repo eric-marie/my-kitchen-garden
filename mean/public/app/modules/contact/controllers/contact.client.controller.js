@@ -2,7 +2,6 @@
 
 angular.module('contact').controller('ContactController', ['$scope', '$http', 'Authentication',
     function($scope, $http, Authentication) {
-        // This provides Authentication context.
         $scope.authentication = Authentication;
 
         $scope.submit = function() {

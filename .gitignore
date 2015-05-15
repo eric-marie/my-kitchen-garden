@@ -21,3 +21,6 @@
 /mean/public/images/
 /mean/public/js/
 /mean/public/css/
+
+# Dossier d'upload
+/mean/public/upload/

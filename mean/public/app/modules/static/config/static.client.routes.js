@@ -1,6 +1,5 @@
 'use strict';
 
-// Setting up route
 angular.module('static').config(['$stateProvider',
     function($stateProvider) {
         $stateProvider
