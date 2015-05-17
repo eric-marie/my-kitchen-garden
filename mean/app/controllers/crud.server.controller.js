@@ -14,6 +14,7 @@ module.exports = function(modelName, sortBy) {
 	return {
 		create: function(req, res) {
 			var model = new Model(req.body);
+            model.author = req.user;
 
 			model.save(function(err) {
 				if (err) {
@@ -26,12 +27,13 @@ module.exports = function(modelName, sortBy) {
 			});
 		},
 		read: function(req, res) {
-			res.json(req.modelName);
+			res.json(req.model[modelName]);
 		},
 		update: function(req, res) {
-			var model = req.modelName;
+			var model = req.model[modelName];
 
 			model = _.extend(model, req.body);
+            model.updated = Date.now();
 
 			model.save(function(err) {
 				if (err) {
@@ -44,7 +46,7 @@ module.exports = function(modelName, sortBy) {
 			});
 		},
 		delete: function(req, res) {
-			var model = req.modelName;
+			var model = req.model[modelName];
 
 			model.remove(function(err) {
 				if (err) {
@@ -87,7 +89,8 @@ module.exports = function(modelName, sortBy) {
 		  				message: modelName + ' not found'
 		  			});
 				}
-				req.modelName = model;
+                req.model = req.model || {};
+                req.model[modelName] = model;
 				next();
 			});
 		}

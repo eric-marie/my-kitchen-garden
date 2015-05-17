@@ -50,16 +50,13 @@ toExpose.deletePhoto = function (req, res, next) {
     var deletePhoto = function() {
         var publicDir = __dirname.replace('app/controllers', 'public'),
             uploadDir = publicDir + config.uploadDir.recordPhoto;
-        console.log(uploadDir + req.modelName.recordPhoto);
-        fs.unlink(uploadDir + req.modelName.recordPhoto, function (err) {
+        fs.unlink(uploadDir + req.model['Record'].recordPhoto, function (err) {
             next();
         });
     };
 
-    console.log(req.modelName.recordPhoto);
-    console.log(req.body.recordPhoto);
-    if(req.modelName.recordPhoto) {
-        if(req.body.recordPhoto && req.body.recordPhoto == req.modelName.recordPhoto) {
+    if(req.model['Record'].recordPhoto) {
+        if(req.body.recordPhoto && req.body.recordPhoto == req.model['Record'].recordPhoto) {
             next();
         } else {
             deletePhoto();

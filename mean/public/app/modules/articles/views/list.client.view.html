@@ -20,10 +20,13 @@
                     <article class="post" data-ng-href="#!/articles/{{article._id}}"
                              data-ng-repeat="article in articles | filter: { category: categorySearch } | limitTo: offset - articles.length | limitTo: pageSize">
                         <div class="post_header">
-                            <h3 class="post_title"><a href="/#!/articles/{{ article._id }}" data-ng-bind="article.name"></a></h3>
+                            <h3 class="post_title">
+                                <a href="/#!/articles/{{ article._id }}" data-ng-bind="article.name"></a>
+                                <small>{{ article.category[0] }}</small>
+                            </h3>
                             <div class="post_sub">
                                 <i class="fa fa-calendar"></i> {{ article.created | date : 'dd/MM/yyyy' }}
-                                <!--<a href="/#!/articles/{{ article._id }}#post_comments"><i class="fa-comments-alt"></i>6 commentaires</a>-->
+                                <a href="/#!/articles/{{ article._id }}#post_comments"><i class="fa fa-comments-o"></i> {{ article.comments.length ? article.comments.length + ' commentaire(s)' : 'aucun commentaire' }}</a>
                             </div>
                         </div>
                         <div class="post_content">

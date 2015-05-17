@@ -15,6 +15,13 @@ var ArticleSchema = new Schema({
 		type: Date,
 		default: Date.now
 	},
+    updated: {
+        type: Date
+    },
+    author: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
     description: {
         type: String,
         default: '',
@@ -34,7 +41,11 @@ var ArticleSchema = new Schema({
 		unique : true,
 		required: 'name cannot be blank',
 		validate: [validation.len(50), 'name must be 15 chars in length or less']
-	}
+	},
+    comments: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Comment'
+    }]
 });
 
 mongoose.model('Article', ArticleSchema);

@@ -20,11 +20,8 @@
 
                         <label class="control-label" for="category">Catégorie</label>
                         <div class="controls">
-                            <select data-ng-model="record.category[0]" id="category" class="form-control"
-                                    placeholder="Catégorie" required>
-                                <option value="Légume">Légume</option>
-                                <option value="Fruits">Fruit</option>
-                            </select>
+                            <select data-ng-model="record.category[0]" id="category" class="form-control" required
+                                    data-ng-options="category for category in categories"></select>
                         </div>
                     </div>
                     <div class="col-sm-6">

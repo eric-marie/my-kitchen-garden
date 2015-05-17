@@ -17,6 +17,12 @@ angular.module('records').controller('RecordsController', [
         $scope.offset = 0;
         $scope.isAdmin = Roles.isAdmin($scope.authentication.user);
 
+        $scope.categories = [
+            'Légume',
+            'Fruit',
+            'Plante arômatique'
+        ];
+
         // Page changed handler
         $scope.pageChanged = function () {
             $scope.offset = ($scope.currentPage - 1) * $scope.pageSize;

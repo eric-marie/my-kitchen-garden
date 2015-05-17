@@ -3,9 +3,7 @@
 module.exports = function (app) {
     var articles = require('../controllers/articles.server.controller'),
         users = require('../controllers/users.server.controller'),
-        apiAuth = require('../controllers/api.authorization.server.controller'),
-        multiparty = require('connect-multiparty'),
-        multipartyMiddleware = multiparty();
+        apiAuth = require('../controllers/api.authorization.server.controller');
 
     app.route('/articles')
         .get(apiAuth, articles.list)

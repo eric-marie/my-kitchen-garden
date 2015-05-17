@@ -9,7 +9,7 @@
             </ul>
         </section>
         <section>
-            <h3 data-ng-bind="article.name"></h3>
+            <h3>{{ article.name }} <small>{{ article.category[0] }}</small></h3>
             <form data-ng-submit="update()" novalidate>
                 <label class="control-label" for="name">Nom</label>
                 <div class="controls">
@@ -19,10 +19,8 @@
                 <label class="control-label" for="category">Catégorie</label>
                 <div class="controls">
                     <select data-ng-model="article.category[0]" id="category" class="form-control"
-                            placeholder="Catégorie" required>
-                        <option value="Légume">Légume</option>
-                        <option value="Fruits">Fruit</option>
-                    </select>
+                            data-ng-options="category for category in categories"
+                            required></select>
                 </div>
 
                 <label class="control-label" for="description">Description</label>

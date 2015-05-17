@@ -11,10 +11,17 @@ var mongoose = require('mongoose'),
  * Record Schema
  */
 var RecordSchema = new Schema({
-	created: {
-		type: Date,
-		default: Date.now
-	},
+    created: {
+        type: Date,
+        default: Date.now
+    },
+    updated: {
+        type: Date
+    },
+    author: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
     description: {
         type: String,
         default: '',
@@ -28,7 +35,7 @@ var RecordSchema = new Schema({
     category: {
         type: [{
             type: String,
-            enum: ['Légume', 'Fruit']
+            enum: ['Légume', 'Fruit', 'Plante arômatique']
         }],
         default: ['Légume']
     },

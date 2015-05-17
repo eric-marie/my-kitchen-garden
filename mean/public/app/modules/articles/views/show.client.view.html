@@ -2,7 +2,7 @@
     <div class="container">
         <section class="hgroup">
             <div class="clearfix">
-                <h1 class="pull-left">Blog</h1>
+                <h1 class="pull-left">{{ article.name }} <small>{{ article.category[0] }}</small></h1>
                 <div class="pull-right" data-ng-show="isAdmin">
                     <a class="btn btn-primary" href="/#!/articles/{{article._id}}/edit">
                         <i class="fa fa-pencil"></i>
@@ -12,14 +12,27 @@
                     </a>
                 </div>
             </div>
+            <h2>
+                <i class="fa fa-calendar"></i> {{ article.created | date : 'dd/MM/yyyy' }}
+                <a href="/#!/articles/{{ article._id }}#post_comments"><i class="fa fa-comments-o"></i> {{ article.comments.length ? article.comments.length + ' commentaire(s)' : 'aucun commentaire' }}</a>
+            </h2>
             <ul class="breadcrumb">
                 <li><a href="/#!/">Accueil</a></li>
                 <li><a href="/#!/articles">Blog</a></li>
             </ul>
         </section>
         <section>
-            <h3>{{ article.name }} <small>{{ article.category[0] }}</small></h3>
-            <p data-ng-bind-html="article.description"></p>
+            <div class="row">
+                <div id="leftcol" class="col-sm-8 col-md-8">
+                    <article class="post">
+                        <p data-ng-bind-html="article.description"></p>
+                    </article>
+                    <section>
+                        <ng-include src="'/app/modules/comments/views/list.client.view.html'"></ng-include>
+                    </section>
+                </div>
+                <ng-include src="'/app/modules/articles/views/sidebar.client.view.html'"></ng-include>
+            </div>
         </section>
     </div>
 </div>

@@ -5,23 +5,26 @@ angular.module('articles').controller('ArticlesController', [
     '$stateParams',
     '$location',
     '$http',
-    'Upload',
     'Authentication',
     'Articles',
     'Roles',
-    function ($scope, $stateParams, $location, $http, Upload, Authentication, Articles, Roles) {
+    function ($scope, $stateParams, $location, $http, Authentication, Articles, Roles) {
         $scope.authentication = Authentication;
         $scope.currentPage = 1;
         $scope.pageSize = 10;
         $scope.offset = 0;
         $scope.isAdmin = Roles.isAdmin($scope.authentication.user);
 
+        // these vars is important for CommentController
+        $scope.parentName = 'articles';
+        $scope.parentId = null;
+
         $scope.categories = [
-            { value: 'Technique', label: 'Technique' },
-            { value: 'Annonce', label: 'Annonce' },
-            { value: 'Calendrier', label: 'Calendrier' },
-            { value: 'Bien débuter', label: 'Bien débuter' },
-            { value: 'Matériel', label: 'Matériel' }
+            'Technique',
+            'Annonce',
+            'Calendrier',
+            'Bien débuter',
+            'Matériel'
         ];
         $scope.filterCategory = function (category) {
             return category == $scope.categorySearch ? 'active' : '';
@@ -101,11 +104,12 @@ angular.module('articles').controller('ArticlesController', [
             $scope.article = Articles.get({
                 articleId: $stateParams.articleId
             });
+            $scope.parentId = $stateParams.articleId;
         };
 
         // Search for a article
-        $scope.articleSearch = function (product) {
-            $location.path('articles/' + product._id);
+        $scope.articleSearch = function (article) {
+            $location.path('articles/' + article._id);
         };
     }
 ]);

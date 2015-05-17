@@ -12,6 +12,4 @@ var mongoose = require('mongoose'),
 
 var crud = require('./crud.server.controller')('Article', 'name');
 
-var toExpose = crud;
-
-module.exports = toExpose;
+module.exports = crud;

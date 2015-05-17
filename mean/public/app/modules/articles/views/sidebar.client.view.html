@@ -9,8 +9,8 @@
             <li data-ng-class="filterCategory()">
                 <a data-ng-click="setFilterCategory()" href="/#!/articles">Tous</a>
             </li>
-            <li data-ng-repeat="category in categories" data-ng-class="filterCategory(category.value)">
-                <a data-ng-click="setFilterCategory(category.value)" href="/#!/articles">{{ category.label }}</a>
+            <li data-ng-repeat="category in categories" data-ng-class="filterCategory(category)">
+                <a data-ng-click="setFilterCategory(category)" href="/#!/articles">{{ category }}</a>
             </li>
         </ul>
     </aside>
