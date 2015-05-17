@@ -15,10 +15,6 @@ angular.module('articles').controller('ArticlesController', [
         $scope.offset = 0;
         $scope.isAdmin = Roles.isAdmin($scope.authentication.user);
 
-        // these vars is important for CommentController
-        $scope.parentName = 'articles';
-        $scope.parentId = null;
-
         $scope.categories = [
             'Technique',
             'Annonce',
@@ -111,5 +107,10 @@ angular.module('articles').controller('ArticlesController', [
         $scope.articleSearch = function (article) {
             $location.path('articles/' + article._id);
         };
+
+        // these vars is important for CommentController
+        $scope.parentName = 'articles';
+        $scope.parentId = null;
+        $scope.parentRefresh = $scope.findOne;
     }
 ]);
