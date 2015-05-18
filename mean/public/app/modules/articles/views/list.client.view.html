@@ -34,11 +34,11 @@
                             <a href="/#!/articles/{{ article._id }}" class="btn btn-primary">Lire la suite</a>
                         </div>
                     </article>
-                    <pagination total-items="articles.length + 1" data-ng-model="currentPage" data-ng-change="pageChanged()"
+                    <pagination total-items="(articles | filter: { category: categorySearch }).length + 1" data-ng-model="currentPage" data-ng-change="pageChanged()"
                                 max-size="pageSize" data-ng-show="articles.length > pageSize" rotate="false"
                                 previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
                             ></pagination>
-                    <div class="alert alert-warning text-center" data-ng-hide="!articles.$resolved || articles.length || !isAdmin">
+                    <div class="alert alert-warning text-center" data-ng-hide="!articles.$resolved || (articles | filter: { category: categorySearch }).length || !isAdmin">
                         Pas encore d'article. Pourquoi ne pas en <a href="/#!/articles/create">créer un</a> ?
                     </div>
                 </div>

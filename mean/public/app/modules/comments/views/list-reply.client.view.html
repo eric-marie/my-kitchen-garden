@@ -1,0 +1,39 @@
+<div id="reply" data-ng-controller="CommentsController" data-ng-init="find()">
+    <div class="comment">
+        <hr/>
+        <h4>Réponses</h4>
+        <div data-ng-repeat="comment in comments.slice().reverse()">
+            <div class="clearfix margin-bottom">
+                <div class="pull-left">
+                    <img class="profile-photo-mini" data-ng-src="{{ getProfilePhoto(comment.author) }}">
+                    <div class="comment_name" data-ng-bind="comment.author.displayName"></div>
+                    <div class="comment_date">{{ comment.created | date : 'Le dd/MM/yyyy' }}</div>
+                    <div class="comment_date">{{ comment.created | date : 'à hh:mm:ss' }}</div>
+                </div>
+                <div class="the_comment">
+                    <p>{{ comment.content }}</p>
+                </div>
+                <div data-ng-show="isAdmin" class="pull-right">
+                    <a data-ng-click="remove(comment)"><i class="fa fa-times"></i></a>
+                </div>
+            </div>
+            <hr/>
+        </div>
+        <div data-ng-hide="comments.length">
+            <div class="alert alert-warning">Il n'y a pas de réponse pour le moment.</div>
+        </div>
+    </div>
+    <form data-ng-submit="create()" name="comment_form" novalidate>
+        <h4>Répondre</h4>
+        <div class="input-group">
+            <input type="text" name="content" data-ng-model="comment.content" id="content" class="form-control"
+                   placeholder="Commentaire" required>
+            <span class="input-group-btn">
+                <input type="submit" value="Envoyer" class="btn btn-success">
+            </span>
+        </div>
+        <div data-ng-show="error" class="text-danger">
+            <strong data-ng-bind="error"></strong>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,43 @@
+<div class="main" data-ng-controller="DiscussionsController">
+    <div class="container">
+        <section class="hgroup">
+            <h1>Forum</h1>
+            <ul class="breadcrumb pull-right">
+                <li><a href="/#!/">Accueil</a></li>
+                <li><a href="/#!/discussions">Forum</a></li>
+            </ul>
+        </section>
+        <section>
+            <h3>{{ discussion.name }} <small>{{ discussion.category[0] }}</small></h3>
+            <form data-ng-submit="create()" novalidate>
+                <label class="control-label" for="name">Nom</label>
+                <div class="controls">
+                    <input type="text" data-ng-model="discussion.name" id="name" class="form-control" placeholder="Nom" required>
+                </div>
+
+                <label class="control-label" for="category">Catégorie</label>
+                <div class="controls">
+                    <select data-ng-init="discussion.category[0] = 'Technique'" data-ng-model="discussion.category[0]"
+                            data-ng-options="category for category in categories" id="category"
+                            class="form-control" required></select>
+                </div>
+
+                <label class="control-label" for="description">Description</label>
+                <div class="controls">
+                    <textarea name="description" data-ng-model="discussion.description" id="description" class="form-control" cols="30" rows="10" placeholder="Description" required></textarea>
+                </div>
+
+                <div class="text-center margin-top">
+                    <input type="submit" value="Créer" class="btn btn-success">
+                </div>
+
+                <div data-ng-show="error" class="text-danger">
+                    <strong data-ng-bind="error"></strong>
+                </div>
+
+                <h3>Aperçu du contenu</h3>
+                <div data-ng-bind-html="discussion.description"></div>
+            </form>
+        </section>
+    </div>
+</div>

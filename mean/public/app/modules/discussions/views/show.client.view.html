@@ -1,0 +1,38 @@
+<div class="main" data-ng-controller="DiscussionsController" data-ng-init="findOne()">
+    <div class="container">
+        <section class="hgroup">
+            <div class="clearfix">
+                <h1 class="pull-left">{{ discussion.name }}</h1>
+                <div class="pull-right" data-ng-show="isAdmin">
+                    <a class="btn btn-primary" href="/#!/discussions/{{discussion._id}}/edit">
+                        <i class="fa fa-pencil"></i>
+                    </a>
+                    <a class="btn btn-danger" data-ng-click="remove()">
+                        <i class="fa fa-trash"></i>
+                    </a>
+                </div>
+            </div>
+            <h2>
+                <i class="fa fa-calendar"></i> {{ discussion.created | date : 'dd/MM/yyyy à hh:mm' }}
+                <a href="/#!/discussions/{{ discussion._id }}#reply"><i class="fa fa-comments-o"></i> {{ discussion.comments.length ? discussion.comments.length + ' réponse(s)' : 'aucune réponse' }}</a>
+            </h2>
+            <ul class="breadcrumb">
+                <li><a href="/#!/">Accueil</a></li>
+                <li><a href="/#!/discussions">Forum</a></li>
+                <li class="active">{{ discussion.category[0] }}</li>
+            </ul>
+        </section>
+        <section>
+            <div class="row">
+                <div class="col-xs-12">
+                    <discussion class="post">
+                        <p data-ng-bind-html="discussion.description"></p>
+                    </discussion>
+                    <section>
+                        <ng-include src="'/app/modules/comments/views/list-reply.client.view.html'"></ng-include>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

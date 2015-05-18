@@ -7,7 +7,8 @@ module.exports = function (app) {
 
     // Singulier: Pluriel
     var moduleList = {
-        'article': 'articles'
+        'article': 'articles',
+        'discussion': 'discussions'
     };
     for(var key in moduleList) {
         if(moduleList.hasOwnProperty(key)) {

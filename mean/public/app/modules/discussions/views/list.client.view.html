@@ -1,0 +1,75 @@
+<div class="main" data-ng-controller="DiscussionsController" data-ng-init="find()">
+    <div class="container">
+        <section class="hgroup">
+            <div class="clearfix">
+                <h1 class="pull-left" data-ng-hide="categorySearch">Forum</h1>
+                <h1 class="pull-left" data-ng-show="categorySearch" data-ng-bind="categorySearch"></h1>
+                <div class="pull-right" data-ng-show="isAdmin">
+                    <a class="btn btn-success" href="/#!/discussions/create">
+                        <i class="fa fa-plus"></i>
+                    </a>
+                </div>
+            </div>
+            <ul class="breadcrumb">
+                <li><a href="/#!/">Accueil</a></li>
+                <li class="active" data-ng-hide="categorySearch">Forum</li>
+                <li data-ng-show="categorySearch"><a href="/#!/discussions" data-ng-click="setFilterCategory()">Forum</a></li>
+                <li class="active" data-ng-show="categorySearch" data-ng-bind="categorySearch"></li>
+            </ul>
+        </section>
+        <section>
+            <div class="row">
+                <div class="col-xs-12" data-ng-show="categorySearch">
+                    <div class="post" data-ng-href="#!/discussions/{{discussion._id}}"
+                         data-ng-repeat="discussion in discussions | filter: { category: categorySearch } | limitTo: offset - discussions.length | limitTo: pageSize">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <h3 class="margin-none">
+                                    <a href="/#!/discussions/{{ discussion._id }}" data-ng-bind="discussion.name"></a>
+                                </h3>
+                                <p>
+                                    par : <a data-ng-bind="discussion.author.displayName"></a>
+                                    –
+                                    Le {{ discussion.created | date : 'dd/MM/yyyy à hh:mm' }}
+                                </p>
+                                <p data-ng-bind-html="(discussion.description | limitTo : 100 : 0) + ' [...]'"></p>
+                            </div>
+                            <div class="col-sm-4">
+                                <a href="/#!/discussions/{{ discussion._id }}#reply">
+                                    <i>{{ discussion.comments.length ? discussion.comments.length + ' réponses(s)' : 'aucune réponse' }}</i>
+                                </a>
+                            </div>
+                        </div>
+                        <hr/>
+                    </div>
+                    <pagination total-items="(discussions | filter: { category: categorySearch }).length + 1" data-ng-model="currentPage" data-ng-change="pageChanged()"
+                                max-size="pageSize" data-ng-show="discussions.length > pageSize" rotate="false"
+                                previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
+                            ></pagination>
+                    <div class="alert alert-warning text-center" data-ng-hide="!discussions.$resolved || (discussions | filter: { category: categorySearch }).length || !isAdmin">
+                        Pas encore de discussion dans cette catégorie. Pourquoi ne pas en <a href="/#!/discussions/create">créer une</a> ?
+                    </div>
+                </div>
+                <div class="col-xs-12" data-ng-hide="categorySearch">
+                    <div data-ng-repeat="category in categoriesStat">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <h3 class="margin-none"><a data-ng-click="setFilterCategory(category.name)" href="/#!/discussions" data-ng-bind="category.name"></a></h3>
+                            </div>
+                            <div class="col-sm-4" data-ng-show="category.total">
+                                Dernier sujet : <a href="/#!/discussions/{{ category.lastDiscussion._id }}" data-ng-bind="category.lastDiscussion.name"></a><br>
+                                par : <a data-ng-bind="category.lastDiscussion.author.displayName"></a><br>
+                                {{ category.total }} sujets
+                            </div>
+                            <div class="col-sm-4" data-ng-hide="category.total">
+                                <i>Aucune discussion pour le moment</i><br>
+                                <br>
+                            </div>
+                        </div>
+                        <hr />
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

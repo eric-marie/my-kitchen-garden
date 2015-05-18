@@ -65,7 +65,10 @@ module.exports = function(modelName, sortBy) {
 				query = req.query.filter;
 			}
 
-			Model.find(query).sort(sortBy).exec(function(err, models) {
+			Model.find(query)
+                .populate('author', '-firstName -lastName -email -username -password -salt -provider -providerData -additionalProvidersData -roles -updated -created -resetPasswordToken -resetPasswordExpires')
+                .sort(sortBy)
+                .exec(function(err, models) {
 				if (err) {
 					return res.status(400).send({
 						message: errorHandler.getErrorMessage(err)
