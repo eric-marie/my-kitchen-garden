@@ -4,7 +4,7 @@
             <div class="clearfix">
                 <h1 class="pull-left" data-ng-hide="categorySearch">Forum</h1>
                 <h1 class="pull-left" data-ng-show="categorySearch" data-ng-bind="categorySearch"></h1>
-                <div class="pull-right" data-ng-show="isAdmin">
+                <div class="pull-right" data-ng-show="isUser">
                     <a class="btn btn-success" href="/#!/discussions/create">
                         <i class="fa fa-plus"></i>
                     </a>
@@ -46,7 +46,7 @@
                                 max-size="pageSize" data-ng-show="discussions.length > pageSize" rotate="false"
                                 previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
                             ></pagination>
-                    <div class="alert alert-warning text-center" data-ng-hide="!discussions.$resolved || (discussions | filter: { category: categorySearch }).length || !isAdmin">
+                    <div class="alert alert-warning text-center" data-ng-hide="!discussions.$resolved || (discussions | filter: { category: categorySearch }).length || !isUser">
                         Pas encore de discussion dans cette catégorie. Pourquoi ne pas en <a href="/#!/discussions/create">créer une</a> ?
                     </div>
                 </div>

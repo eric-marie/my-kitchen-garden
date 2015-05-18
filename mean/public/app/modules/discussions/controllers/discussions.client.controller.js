@@ -14,6 +14,7 @@ angular.module('discussions').controller('DiscussionsController', [
         $scope.pageSize = 10;
         $scope.offset = 0;
         $scope.isAdmin = Roles.isAdmin($scope.authentication.user);
+        $scope.isAdmin = Roles.isUser($scope.authentication.user);
 
         $scope.categoriesStat = [];
         $scope.categories = [
