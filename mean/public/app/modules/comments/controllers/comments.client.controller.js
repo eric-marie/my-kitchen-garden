@@ -73,10 +73,25 @@ angular.module('comments').controller('CommentsController', [
 
         // Find a list of Comments
         $scope.find = function () {
-            $scope.comments = Comments.query({
+            var comments = Comments.query({
                 parentName: $scope.parentName,
                 parentId: $scope.parentId
             });
+
+            setTimeout(function() {
+                $scope.comments = [];
+                var commentList = [];
+                if('articles' == $scope.parentName) {
+                    commentList = $scope.article.comments;
+                } else if('discussions' == $scope.parentName) {
+                    commentList = $scope.discussion.comments;
+                }
+                for(var key in comments) {
+                    if(comments.hasOwnProperty(key) && 0 <= commentList.indexOf(comments[key]._id)) {
+                        $scope.comments.push(comments[key]);
+                    }
+                }
+            }, 200);
         };
     }
 ]);
