@@ -10,8 +10,8 @@
     "url": "git://github.com/eric-marie/my-kitchen-garden.git"
   },
   "scripts": {
-    "start": "cd mean && NODE_ENV=production node server.js && node bin/mri-server.js",
-    "postinstall": "./node_modules/grunt-cli/bin/grunt && cd mean && npm install"
+    "start": "cd mean && NODE_ENV=production node server.js && cd ../bower_components/marmiton-recherche-ingredient node server.js",
+    "postinstall": "./node_modules/grunt-cli/bin/grunt && cd mean && npm install && cd ../bower_components/marmiton-recherche-ingredient && npm install"
   },
   "dependencies": {
     "grunt": "0.4.*",
